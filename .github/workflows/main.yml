@@ -43,6 +43,14 @@ jobs:
       run: |
         cd blog
         chmod -R 777 storage bootstrap/cache
+    - name: Install NPM Dependencies
+      run: |
+        cd blog
+        npm install
+    - name: Build Vite Assets
+      run: |
+        cd blog
+        npm run build
     - name: Create Database
       run: |
         cd blog
