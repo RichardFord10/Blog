@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import  "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import  "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import  "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
+@import  "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+
+.game-container {
+    text-align: center;
+}
+#gameArea {
+    width: 475px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.dino {
+    background-image: url('/public/images/game/dino.png'); 
+    background-size: cover;
+    width: 100px; /* Set the width as per your image size */
+    height: 100px; /* Set the height as per your image size */
+    position: absolute;
+    bottom: 5px; /* Adjust as necessary */
+  }
+.obstacle {
+    background-image: url('/public/images/game/cloud.png'); 
+    background-size: cover;
+    width: 50px; 
+    height: 50px; 
+    position: absolute;
+    bottom: 0px; 
+    z-index: 10;
+    /* margin-top: 100px; */
+    margin: 0px;
+    padding: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+    p {
+        color: white;
+    }
+    code {
+        background-color: #333!important;
+        color: #f8f8f2;
+    }
+}
+
+body {
+    margin: 0!important;
+    padding: 0!important;
+    /* other styles */
+}

@@ -1,0 +1,13 @@
+name: blog
+recipe: laravel
+config:
+  webroot: ./public
+  php: '8.2'
+  via: apache
+  database: mysql 
+  cache: redis 
+services:
+  node:
+    type: node:18
+    globals:
+      npm: latest
