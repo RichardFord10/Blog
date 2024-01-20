@@ -51,7 +51,9 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      run: |
+        cd blog
+        vendor/bin/phpunit
   # deploy:
   #   runs-on: ubuntu-latest
 
