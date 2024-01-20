@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-
   lighthouse:
     runs-on: ubuntu-latest
     steps:
@@ -23,8 +22,10 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v3
-    - name: List Files
-      run: ls -l
+    - name: Print working directory
+      run: pwd
+    - name: List files in the working directory
+      run: ls -la
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: List Files
