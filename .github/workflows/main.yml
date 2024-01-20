@@ -81,7 +81,7 @@ jobs:
 
     - name: Deploy to Digital Ocean
       run: |
-        ssh -o StrictHostKeyChecking=no root@${{secrets.SERVER_IP_ADDRESS}} << 'ENDSSH'
+        ssh -T -o StrictHostKeyChecking=no root@${{secrets.SERVER_IP_ADDRESS}}
         cd /var/www/Blog/blog
         git pull origin main
         composer install
