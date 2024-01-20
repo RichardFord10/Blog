@@ -6,7 +6,8 @@
             <!-- Photo -->
             <div class="inline-block">
                 <div class="h-48 w-48 rounded-full overflow-hidden shadow-sm mx-auto">
-                    <img src="{{ asset('images/profile.jpg') }}" alt="Profile Image" class="w-full h-full object-cover object-center">
+                    <img src="{{ asset('images/profile.jpg') }}" alt="Profile Image"
+                        class="w-full h-full object-cover object-center">
                 </div>
             </div>
 
@@ -34,40 +35,29 @@
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Work History</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 <!-- Work History Tiles -->
-                <!-- Work History Tile 1
-                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
-                            <h4 class="font-bold text-lg dark:text-white">Web Developer at Bucknell University</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Full-stack development, specializing in
-                                Drupal
-                                and PHP.</p>
-                        </div>
-                        Work History Tile 2
-                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
-                            <h4 class="font-bold text-lg dark:text-white">Web Developer at <a href="https://www.linkedin.com/company/best-cigar-prices/jobs/">bestcigarprices.com</a></h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">LAMP stack development with a focus on
-                                e-commerce solutions.</p>
-                        </div>
-                        Work History Tile 2
-                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
-                            <h4 class="font-bold text-lg dark:text-white">Analyst/Programmer at New Global Marketing</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Working within a marketing team to automate process and email workflows using python.</p>
-                        </div> -->
+
                 @foreach(\App\Models\WorkHistory::all() as $work)
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
                     <div class="flex flex-col md:flex-row md:items-center">
-                        <!-- For smaller screens (mobile) -->
+                        <!-- Image Section -->
+                        <img class="h-40 w-full object-cover md:hidden" src="{{ asset($work->image) }}"
+                            alt="Work History Image">
+                        <img class="hidden md:block h-40 w-48 object-cover" src="{{ asset($work->image) }}"
+                            alt="Work History Image">
 
-                        <img class="h-40 w-100 object-cover md:hidden" src="{{ asset($work->image) }}" alt="Work History Image">
-
-                        <!-- For larger screens (desktop) -->
-                        <img class="hidden md:block h-40 w-48 object-cover" src="{{ asset($work->image) }}" alt="Work History Image">
-
+                        <!-- Content Section -->
                         <div class="mt-4 md:mt-0 md:ml-6 block">
                             <h4 class="font-bold text-lg dark:text-white">{{ $work->title }} at {{ $work->company }}
                             </h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">{{ $work->description }}</p>
-                            <sup>{{ $work->start_date }} - {{ $work->end_date ?? 'Present' }}</sup>
                         </div>
+                    </div>
+
+                    <!-- Footer Section -->
+                    <div class=" pt-4 mt-4 border-t border-gray-200 dark:border-gray-600 ">
+                        <p class="text-xs text-gray-500 dark:text-gray-400 text-right flex-1">
+                            {{ $work->start_date }} - {{ $work->end_date ?? 'Present' }}
+                        </p>
                     </div>
                 </div>
                 @endforeach
@@ -79,16 +69,24 @@
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Projects</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 @foreach(\App\Models\Projects::all() as $project)
-                <a target="_blank" href="{{ $project->link }}">
-                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
+                    <a target="_blank" href="{{ $project->link }}" class="block hover:underline">
                         <h4 class="font-bold text-lg dark:text-white">
                             {{ $project->title }}
                         </h4>
-                </a>
-                <p class="text-sm text-gray-600 dark:text-gray-300">{{ $project->description }}</p>
+                    </a>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">{{ $project->description }}</p>
+                    <!-- Footer section for author and time -->
+                    <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-600">
+                        <p class="text-xs text-gray-500 dark:text-gray-400 text-right flex-1">
+                            {{ $project->created_at->format('F j, Y') }}
+                        </p>
+                    </div>
+                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
+
     </div>
     </div>
 

@@ -8,6 +8,8 @@ import 'tinymce/icons/default/icons';
 import 'tinymce/themes/silver/theme';
 import 'tinymce/models/dom/model';
 import 'tinymce/plugins/code';
+import 'prismjs';
+
 
 window.Alpine = Alpine;
 
@@ -16,10 +18,12 @@ window.addEventListener('DOMContentLoaded', () => {
         selector: '#content',
         skin: false,
         content_css: false,
+        plugins: 'code',
+        toolbar: 'code'
 
     });
 });
-
+Prism.highlightAll();
 if(document.getElementById('postForm'))
 {
 
