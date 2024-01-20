@@ -23,13 +23,11 @@ jobs:
         php-version: '8.0'
     - uses: actions/checkout@v3
     - name: Change Directory
-      run: cd blog/
-    - name: List files in the working directory
-      run: ls -la
-    - name: List files in the working directory
-      run: ls -la
+      run: cd blog
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: |
+        cd blog
+        php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: List Files
       run: ls -l
     - name: Install Dependencies
