@@ -45,12 +45,13 @@ jobs:
         chmod -R 777 storage bootstrap/cache
     - name: Create Database
       run: |
+        cd blog
         mkdir -p database
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
+        DB_DATABASE: ${{ github.workspace }}/blog/database/database.sqlite
       run: |
         cd blog
         vendor/bin/phpunit
