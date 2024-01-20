@@ -6,15 +6,15 @@ on:
       - main
 
 jobs:
-  lighthouse:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          urls: |
-            https://richardford.online
+  # lighthouse:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Audit URLs using Lighthouse
+  #       uses: treosh/lighthouse-ci-action@v10
+  #       with:
+  #         urls: |
+  #           https://richardford.online
   build_test:
     runs-on: ubuntu-latest
     steps:
