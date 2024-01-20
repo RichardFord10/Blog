@@ -1,4 +1,4 @@
-name: Deploy to Digital Ocean
+name: Build - Test - Deploy
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         php-version: '8.0'
     - uses: actions/checkout@v3
     - name: Change Directory
-      run: cd blog/
+      run: cd blog/blog
     - name: List files in the working directory
       run: ls -la
     - name: Copy .env
