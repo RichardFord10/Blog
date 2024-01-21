@@ -40,6 +40,8 @@ Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index'); //
 Route::middleware('auth')->group(function () {
     Route::resource('work_history', WorkHistoryController::class);
     Route::resource('projects', ProjectsController::class);
+    Route::get('posts/review', [PostController::class, 'review'])->name('posts.review');
+    Route::post('posts/confirm', [PostController::class, 'confirm'])->name('posts.confirm');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
