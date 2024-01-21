@@ -16,15 +16,13 @@
                 <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">👋 Hello,</h2>
                 <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm Richard Ford</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
-                    I'm a web developer with a background in digital marketing. I can bring a unique blend of technical
-                    expertise and marketing acumen to the table.
+                    I'm a web developer with roots in digital marketing. I offer a distinctive mix of coding prowess and strategic marketing insight.
                     <br><br>
-                    My proficiency in full-stack development spans across PHP, Python, JavaScript, Bash, Postgresql and
-                    Mysql with a foundation in frameworks like Codeigniter, Laravel, and Drupal.
+                    Skilled in full-stack development, I operate fluently through PHP, Python, JavaScript, Bash, along with databases like Postgresql and Mysql, with expertise in frameworks such as Codeigniter, Laravel, and Drupal.
                     <br><br>
-                    My journey began in a warehouse as an order picker, where I cultivated my passion for more elegant
-                    solutions to problems. This eventually led me to learning programming and finding my way into the
-                    tech world. Today, I leverage my skills at Bucknell University, creating user-centric web solutions.
+                    My journey began in a warehouse as an order picker, where I cultivated my passion for finding more elegant
+                    solutions to problems. This eventually led me to learn programming, opening my way into the
+                    tech world. Today, I leverage my skills at Bucknell University creating web solutions that prioritize user experience.
                     Reach out to let me know how I can help you reach your technical goals!
                 </p>
             </div>
