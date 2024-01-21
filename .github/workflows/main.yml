@@ -69,10 +69,7 @@ jobs:
       - build_test
       
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up SSH
+    - name: Deploy to Digital Ocean
       uses: appleboy/ssh-action@v0.1.2
       with:
         host: ${{secrets.SERVER_IP_ADDRESS}}
