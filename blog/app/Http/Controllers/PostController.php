@@ -25,16 +25,13 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
         ]);
+        
+        $request->session()->put('post_preview', $request->only('title', 'content'));
+        return redirect()->route('posts.review');
+
+        // $post->save();
     
-        $post = new Post([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'author_id' => Auth::id(), // Set the author ID to the current user's ID
-        ]);
-    
-        $post->save();
-    
-        return redirect()->route('posts.index')->with('success','Post created successfully.');
+        // return redirect()->route('posts.index')->with('success','Post created successfully.');
     }
 
     public function edit($id)
@@ -78,4 +75,36 @@ class PostController extends Controller
     
         return view('posts.single_post', compact('post'));
     }
+
+    public function review(Request $request)
+    {
+        $post = (object) $request->session()->get('post_preview');
+        if (!$post) {
+            return redirect()->route('posts.create')->withErrors('No post data found.');
+        }
+
+        return view('posts.review', compact('post'));
+    }
+
+    public function confirm(Request $request)
+    {
+        $data = $request->session()->get('post_preview');
+        $request->session()->forget('post_preview');
+
+        if (!$data) {
+            return redirect()->route('posts.create')->withErrors('No post data to confirm.');
+        }
+
+        // Create the post
+        $post = new Post([
+            'title' => $data['title'],
+            'content' => $data['content'],
+            'author_id' => Auth::id(),
+        ]);
+
+        $post->save();
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+    }
+
 }
