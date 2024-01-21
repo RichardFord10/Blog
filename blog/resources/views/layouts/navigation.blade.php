@@ -213,36 +213,29 @@
                     <div x-show="open" @click.away="open = false" x-cloak
                         class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
-                            <a href="{{ route('portfolio') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                                Portfolio
-                            </a>
-                            <a href="{{ route('posts.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                                Blog Posts
-                            </a>
-                            <a href="{{ route('chat.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                                ChatGPT Clone
-                            </a>
-                            <!-- Additional feature links can be added here -->
-                            <a href="{{ route('upload') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                                CSV Tool
-                            </a>
+                        <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                {{ __('Blog Posts') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')">
+                {{ __('ChatGPT Clone') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
+                {{ __('CSV Tool') }}
+            </x-responsive-nav-link>
                             <!-- Additional feature links can be added here -->
                         </div>
                     </div>
                 </div>
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-
-                    </x-slot>
-
-                    <x-slot name="content">
-
-                    </x-slot>
-                </x-dropdown>
+                <x-responsive-nav-link :href=" route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-responsive-nav-link>
+                @if (Route::has('register'))
+                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-responsive-nav-link>
+                @endif
             </div>
 
             <!-- Hamburger -->
