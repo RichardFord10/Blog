@@ -9,6 +9,7 @@
 .game-container {
     text-align: center;
 }
+
 #gameArea {
     width: 475px;
     height: 200px;
@@ -37,18 +38,56 @@
     padding: 0px;
 }
 
-@media (prefers-color-scheme: dark) {
-    p {
-        color: white;
-    }
-    code {
-        background-color: #333!important;
-        color: #f8f8f2;
-    }
-}
+
 
 body {
     margin: 0!important;
     padding: 0!important;
-    /* other styles */
+    color: #fff;
 }
+  
+/* Code block styles */
+.code-block {
+  margin: 1em 0;
+  
+  overflow: hidden; /* Ensures the header and the code block stick together */
+  background: #000000; /* This color is for the code block */
+  border-radius: 0.5em;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;
+    background: #333; /* Adjust background color as needed */
+    color: #fff;
+    margin: 0; /* Ensure there are no margins causing a gap */
+}
+
+.code-language {
+  font-weight: bold;
+}
+
+.copy-code {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+/* Specificity for Prism code styling */
+pre[class*="language-"] {
+  margin: 0;
+  border: none!important;
+  background: #000!important; /* If you want the code block to have a black background */
+}
+
+/* Reset any margins between the header and code block */
+.code-header + pre {
+  margin-top: 0;
+}
+

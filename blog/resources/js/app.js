@@ -8,7 +8,14 @@ import 'tinymce/icons/default/icons';
 import 'tinymce/themes/silver/theme';
 import 'tinymce/models/dom/model';
 import 'tinymce/plugins/code';
-import 'prismjs';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-javascript';
+import  "prismjs/themes/prism-twilight.css";
 
 
 window.Alpine = Alpine;
@@ -23,7 +30,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
 });
-Prism.highlightAll();
+
+//Prism syntax highlighting
+document.addEventListener('DOMContentLoaded', (e) => {
+    Prism.highlightAll();
+});
+
+//copy code
+document.querySelectorAll('.copy-code').forEach((button) => {
+    button.addEventListener('click', function() {
+      const code = this.parentNode.nextElementSibling.querySelector('code').innerText;
+      const textarea = document.createElement('textarea');
+      textarea.value = code;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+      
+      // Optional: Show a message that the code was copied
+      button.textContent = 'Copied!';
+      setTimeout(() => { button.textContent = 'Copy code'; }, 2000);
+    });
+  });
+  
 if(document.getElementById('postForm'))
 {
 
