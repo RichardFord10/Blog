@@ -13,19 +13,19 @@
 
             <!-- About Me Text -->
             <div class="mt-4 px-6">
-                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Hi 👋 I'm Richard Ford</h2>
-                <p class="text-gray-600 dark:text-gray-300">
-                    I'm a web developer with a background
-                    in digital marketing. I can
-                    bring a unique blend of technical expertise and marketing acumen to the table. My proficiency
-                    spans
-                    across PHP, Python, JavaScript, and full-stack development, with a strong foundation in
-                    frameworks
-                    like Drupal, Flask, and Node.js. My journey began in a warehouse, where I cultivated my passion
-                    for
-                    programming and self-taught my way into the tech world. Today, I leverage my skills at Bucknell
-                    University, creating user-centric web solutions. Reach out to let me know how I can help you reach
-                    your technical goals!
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">👋 Hello,</h2>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm Richard Ford</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
+                    I'm a web developer with a background in digital marketing. I can bring a unique blend of technical
+                    expertise and marketing acumen to the table.
+                    <br><br>
+                    My proficiency in full-stack development spans across PHP, Python, JavaScript, Bash, Postgresql and
+                    Mysql with a foundation in frameworks like Codeigniter, Laravel, and Drupal.
+                    <br><br>
+                    My journey began in a warehouse as an order picker, where I cultivated my passion for more elegant
+                    solutions to problems. This eventually led me to learning programming and finding my way into the
+                    tech world. Today, I leverage my skills at Bucknell University, creating user-centric web solutions.
+                    Reach out to let me know how I can help you reach your technical goals!
                 </p>
             </div>
         </div>

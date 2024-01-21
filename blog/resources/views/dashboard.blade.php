@@ -4,17 +4,17 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 Hello, {{ explode(' ', Auth::user()->name)[0] }}! 👋
             </h2>
-            <div class="flex gap-2">
-            <a href="{{ route('projects.create') }}"
-                    class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <div class="flex flex-wrap gap-2">
+                <a href="{{ route('projects.create') }}"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Add Project
                 </a>
                 <a href="{{ route('work_history.create') }}"
-                    class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Add Work History
                 </a>
                 <a href="{{ route('posts.create') }}"
-                    class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                     Create Post
                 </a>
             </div>
