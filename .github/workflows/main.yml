@@ -17,64 +17,67 @@ jobs:
   #           https://richardford.online
   build_test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./blog
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.2'
     - uses: actions/checkout@v3
-    - name: Change Directory
-      run: cd blog
     - name: Copy .env
-      run: |
-        cd blog
+      run:
         php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: List Files
-      run: ls -l
     - name: Install Dependencies
       run: |
-        cd blog
         composer update
         composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Generate key
       run: |
-        cd blog
         php artisan key:generate
     - name: Directory Permissions
       run: |
-        cd blog
         chmod -R 777 storage bootstrap/cache
     - name: Install NPM Dependencies
       run: |
-        cd blog
         npm install
     - name: Build Vite Assets
       run: |
-        cd blog
         npm run build
     - name: Create Database
       run: |
-        cd blog
         mkdir -p database
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: ${{ github.workspace }}/blog/database/database.sqlite
-      run: |
-        cd blog
+      run: 
         vendor/bin/phpunit
   deploy:
     runs-on: ubuntu-latest
     needs:
       - build_test
-      
     steps:
-    - name: Deploy to Digital Ocean
-      uses: appleboy/ssh-action@v0.1.2
+
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
       with:
-        host: ${{secrets.SERVER_IP_ADDRESS}}
-        key: ${{secrets.SSH_KEY }}
-        username: ${{secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+      
+    - name: Adding Known Hosts
+      run: ssh-keyscan -H ${{ secrets.SERVER_IP_ADDRESS }}  >> ~/.ssh/known_hosts
+
+    - name: Deploy to Digital Ocean
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_IP_ADDRESS }}
+        username:  ${{ secrets.SSH_USER }}
+        port: ${{ secrets.SERVER_PORT }}
+        key: ${{ secrets.SSH_KEY }}
         script: |
           cd /var/www/Blog/blog
           git pull origin main
