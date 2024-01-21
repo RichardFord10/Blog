@@ -6,54 +6,56 @@ on:
       - main
 
 jobs:
-  # lighthouse:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Audit URLs using Lighthouse
-  #       uses: treosh/lighthouse-ci-action@v10
-  #       with:
-  #         urls: |
-  #           https://richardford.online
   build_test:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./blog
+
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.2'
+
     - uses: actions/checkout@v3
+
     - name: Copy .env
       run:
         php -r "file_exists('.env') || copy('.env.example', '.env');"
+
     - name: Install Dependencies
       run: |
         composer update
         composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
     - name: Generate key
       run: |
         php artisan key:generate
+
     - name: Directory Permissions
       run: |
         chmod -R 777 storage bootstrap/cache
+
     - name: Install NPM Dependencies
       run: |
         npm install
+
     - name: Build Vite Assets
       run: |
         npm run build
+
     - name: Create Database
       run: |
         mkdir -p database
         touch database/database.sqlite
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: ${{ github.workspace }}/blog/database/database.sqlite
       run: 
         vendor/bin/phpunit
+
   deploy:
     runs-on: ubuntu-latest
     needs:
@@ -82,9 +84,9 @@ jobs:
         script: |
           cd /var/www/Blog/blog
           git pull origin main
-          composer install
-          npm install
-          npm run build
-          php artisan migrate
-          php artisan cache:clear
-          php artisan config:clear
+          sudo -u rford composer install
+          sudo -u rford npm install
+          sudo -u rford npm run build
+          sudo -u rford php artisan migrate
+          sudo -u rford php artisan cache:clear
+          sudo -u rford php artisan config:clear
