@@ -6,7 +6,7 @@
             <!-- Photo -->
             <div class="inline-block">
                 <div class="h-48 w-48 rounded-full overflow-hidden shadow-sm mx-auto">
-                    <img src="{{ asset('images/profile.jpg') }}" alt="Profile Image"
+                    <img src="{{ asset('images/profile2.jpg') }}" alt="Profile Image"
                         class="w-full h-full object-cover object-center">
                 </div>
             </div>
