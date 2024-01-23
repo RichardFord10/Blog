@@ -8,6 +8,16 @@ import 'tinymce/icons/default/icons';
 import 'tinymce/themes/silver/theme';
 import 'tinymce/models/dom/model';
 import 'tinymce/plugins/code';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/image';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/charmap';
+import 'tinymce/plugins/media';
+
+
+
+
 import Prism from 'prismjs';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-javascript';
@@ -24,9 +34,8 @@ tinymce.init({
     selector: '#content',
     skin: false,
     content_css: false,
-    plugins: 'code lists link image table charmap hr media',
+    plugins: 'code lists link image table charmap media',
     toolbar: 'formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | blockquote | undo redo | cut copy paste | table | charmap | fullscreen | media | hr | removeformat | code',
-    forced_root_block: '', 
 });
 
 //Prism syntax highlighting
