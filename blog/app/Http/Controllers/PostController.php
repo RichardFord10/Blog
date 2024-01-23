@@ -27,6 +27,10 @@ class PostController extends Controller
             'content' => 'required',
         ]);
         
+        if (Auth::id() != config('permissions.super_user_id')) {
+            return redirect()->route('dashboard')->withErrors('You are not authorized to create posts.');
+        }
+
         $request->session()->put('post_preview', $request->only('title', 'content'));
         return redirect()->route('posts.review');
 

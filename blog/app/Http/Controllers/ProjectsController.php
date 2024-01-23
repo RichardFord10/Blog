@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
 {
@@ -18,6 +19,11 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         Projects::create($request->all());
+
+        if (Auth::id() != config('permissions.super_user_id')) {
+            return redirect()->route('dashboard')->withErrors('You are not authorized to create posts.');
+        }
+
         return redirect()->route('portfolio')->with('success', 'Work history added successfully.');
     }
     
