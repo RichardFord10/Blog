@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -64,13 +65,13 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::with('author')->findOrFail($id);
+        $post = Post::with('author')->where('slug', $slug)->firstOrFail();
     
         if (!$post) {
             // Handle the case where the post is not found
-            return redirect()->route('some.route.name')->withErrors('Post not found.');
+            return redirect()->route('posts.index')->withErrors('Post not found.');
         }
     
         return view('posts.single_post', compact('post'));
@@ -90,20 +91,25 @@ class PostController extends Controller
     {
         $data = $request->session()->get('post_preview');
         $request->session()->forget('post_preview');
-
+    
         if (!$data) {
             return redirect()->route('posts.create')->withErrors('No post data to confirm.');
         }
-
+    
+        // Generate the slug from the title
+        $slug_text = \strip_tags($data['title']);
+        $slug = Str::slug($slug_text, '-');
+    
         // Create the post
         $post = new Post([
             'title' => $data['title'],
             'content' => $data['content'],
+            'slug' => $slug,
             'author_id' => Auth::id(),
         ]);
-
+    
         $post->save();
-
+    
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
