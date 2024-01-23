@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container mx-auto p-4">
-        <span>{!! $post->title !!}</span>
+        <div class="py-4">{!! $post->title !!}</div>
         <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
             <div class="p-4">
                 <p class="font-body text-gray-600 dark:text-gray-300 mt-2">{!! $post->content !!}</p>
