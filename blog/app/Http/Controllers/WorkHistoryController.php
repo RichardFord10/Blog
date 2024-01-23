@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WorkHistory;
+use Illuminate\Support\Facades\Auth;
 
 class WorkHistoryController extends Controller
 {
@@ -18,6 +19,11 @@ class WorkHistoryController extends Controller
     public function store(Request $request)
     {
         WorkHistory::create($request->all());
+
+        if (Auth::id() != config('permissions.super_user_id')) {
+            return redirect()->route('dashboard')->withErrors('You are not authorized to create posts.');
+        }
+
         return redirect()->route('portfolio')->with('success', 'Work history added successfully.');
     }
     
