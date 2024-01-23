@@ -6,7 +6,7 @@
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4">
                     <div class="p-4">
                         <h2 class="text-base md:text-lg font-heading font-bold text-gray-800 dark:text-white">
-                            {{ $post->title }}</h2>
+                        {{ strip_tags($post->title) }}</h2>
                             <p class="text-sm font-body text-gray-600 dark:text-gray-300 mt-2">{!! Str::limit($post->content, 10) !!}</p>
                         <!-- Add more post details here -->
                     </div>

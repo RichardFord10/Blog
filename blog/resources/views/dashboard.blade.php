@@ -43,9 +43,9 @@
                     <div class="flex justify-center">
                         <h3
                             class="text-xl font-bold p-2 text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-4 mb-1">
-                            {{ $post->title }}</h3>
+                            {{ strip_tags($post->title) }}</h3>
                     </div>
-                    <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
+                    <div class="p-4 text-gray-900 dark:text-gray-100 flex justify-between items-center">
                         <p>
                         <p class="text-sm font-body text-gray-600 dark:text-gray-300 mt-2">{!!
                             Str::limit($post->content, 35) !!}</p>

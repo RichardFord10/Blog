@@ -20,15 +20,13 @@ import  "prismjs/themes/prism-twilight.css";
 
 window.Alpine = Alpine;
 
-window.addEventListener('DOMContentLoaded', () => {
-    tinymce.init({
-        selector: '#content',
-        skin: false,
-        content_css: false,
-        plugins: 'code',
-        toolbar: 'code'
-
-    });
+tinymce.init({
+    selector: '#content',
+    skin: false,
+    content_css: false,
+    plugins: 'code lists link image table charmap hr media',
+    toolbar: 'formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | blockquote | undo redo | cut copy paste | table | charmap | fullscreen | media | hr | removeformat | code',
+    forced_root_block: '', 
 });
 
 //Prism syntax highlighting
