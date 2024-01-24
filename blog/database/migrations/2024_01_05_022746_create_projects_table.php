@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('link');
             $table->string('image')->nullable(); // Nullable if the image is optional
             $table->timestamps();
-            $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
 
         });
