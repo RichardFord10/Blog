@@ -99,7 +99,7 @@
             <p>&copy; {{ date('Y') }} Richard Ford. All Rights Reserved.</p>
             <p>Made with ❤️</p>
             <p>
-                <a href="mailto:your-email@example.com" class="text-indigo-400 hover:text-indigo-600">Contact</a>
+                <a href="mailto:richardford10@gmail.com" class="text-indigo-400 hover:text-indigo-600">Contact</a>
             </p>
         </div>
     </footer>
