@@ -8,8 +8,9 @@
                 <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Edit Work History</h2>
             </div>
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
-                <form action="{{ route('work_history.store') }}" method="POST">
+                <form action="{{ route('work_history.update', $work_history->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="mb-4">
                         <label for="title"
                             class="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">Title:</label>
@@ -56,7 +57,7 @@
 
                         <!-- Display current image, if available -->
                         @if($work_history->image)
-                        <img src="{{ asset($work_history->image) }}" alt="Current Image" class="mb-3"
+                        <img src="{{ asset('storage/' . $work_history->image) }}" alt="Current Image" class="mb-3"
                             style="max-width: 100px; max-height: 100px;">
                         @endif
 
@@ -65,13 +66,13 @@
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline">
 
                         <!-- Note to user -->
-                        <p class="text-xs text-gray-600">Leave blank if you don't want to change the image.</p>
+                        <p class="text-xs text-gray-600 text-white">Leave blank if you don't want to change the image.</p>
                     </div>
 
                     <div class="flex justify-center">
                         <button type="submit"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Edit Work History
+                            Save
                         </button>
                     </div>
                 </form>

@@ -40,7 +40,7 @@
                 @foreach(\App\Models\WorkHistory::all() as $work)
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <!-- Image Section -->
-                    <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset($work->image) }}"
+                    <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}"
                         alt="Work History Image">
                     <!-- Content Section -->
                     <div class="flex flex-col flex-grow p-4 text-center">
@@ -66,6 +66,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 @foreach(\App\Models\Projects::all() as $project)
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
+                <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $project->image) }}"
+                                alt="Project Image">
                     <a target="_blank" href="{{ $project->link }}" class="block hover:underline">
                         <h4 class="font-bold text-lg dark:text-white">
                             {{ $project->title }}

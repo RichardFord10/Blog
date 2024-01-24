@@ -8,7 +8,7 @@
                 <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Add Work History</h2>
             </div>      
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
-                <form action="{{ route('work_history.store') }}" method="POST">
+                <form action="{{ route('work_history.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-4">
                         <label for="title" class="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">Title:</label>
