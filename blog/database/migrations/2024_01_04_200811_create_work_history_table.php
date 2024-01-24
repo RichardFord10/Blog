@@ -17,8 +17,10 @@ return new class extends Migration
             $table->text('description');
             $table->string('company');
             $table->date('start_date');
-            $table->date('end_date')->nullable(); // Nullable if the position is current
-            $table->string('image')->nullable(); // Nullable if the image is optional
+            $table->date('end_date')->nullable();
+            $table->string('image')->nullable(); 
+            $table->foreign('author_id')->references('id')->on('users');
+
             $table->timestamps();
 
         });
