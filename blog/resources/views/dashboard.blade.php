@@ -27,7 +27,7 @@
                 <div class="py-2">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         @foreach ($posts as $post)
-                        <a href="{{ route('posts.show', $post->id) }}" class="flex-grow">
+                        <a href="{{ route('posts.show', $post->slug) }}" class="flex-grow">
                             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                                 <div class="flex justify-center">
                                     <h3
