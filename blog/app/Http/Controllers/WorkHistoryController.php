@@ -46,7 +46,8 @@ class WorkHistoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $work_history = WorkHistory::findOrFail($id);
+        return view('work_history.edit', compact('work_history'));
     }
 
     /**

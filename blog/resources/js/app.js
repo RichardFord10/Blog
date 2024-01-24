@@ -14,6 +14,7 @@ import 'tinymce/plugins/link';
 import 'tinymce/plugins/table';
 import 'tinymce/plugins/charmap';
 import 'tinymce/plugins/media';
+import '@fortawesome/fontawesome-free/js/all';
 
 
 
@@ -29,6 +30,8 @@ import  "prismjs/themes/prism-twilight.css";
 
 
 window.Alpine = Alpine;
+
+
 
 tinymce.init({
     selector: '#content',

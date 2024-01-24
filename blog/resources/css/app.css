@@ -6,6 +6,7 @@
 @import  "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 @import  "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
 @import  "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import '@fortawesome/fontawesome-free/css/all.css';
 
 
 h1 {
@@ -50,7 +51,9 @@ h3 {
     padding: 0px;
 }
 
-
+[x-cloak] {
+  display: none;
+}
 
 body {
     margin: 0!important;

@@ -49,5 +49,16 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'author_id');
     }
 
+    //Get user posts
+    public function work_histories()
+    {
+        return $this->hasMany(WorkHistory::class, 'author_id');
+    }
+
+           
+    public function projects()
+    {
+        return $this->hasMany(Projects::class, 'author_id');
+    }
 
 }

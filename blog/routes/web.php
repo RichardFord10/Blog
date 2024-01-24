@@ -31,7 +31,10 @@ Route::get('/game', function () {
 Route::get('/dashboard', function () {
     $user = Auth::user();
     $posts = $user->posts; 
-    return view('/dashboard', compact('posts'));
+    $projects = $user->projects;
+    $work_histories = $user->work_histories;
+    return view('/dashboard', compact('posts', 'projects', 'work_histories'));
+    
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send'); // Handles sending messages
