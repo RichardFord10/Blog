@@ -70,7 +70,7 @@
                         @foreach($work_histories as $work)
                         <div
                             class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
-                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset($work->image) }}"
+                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}"
                                 alt="Work History Image">
                             <div class="flex flex-col flex-grow p-4 text-center">
                                 <h4 class="font-bold text-lg dark:text-white">{{ $work->title }}</h4>
@@ -118,8 +118,8 @@
                         @foreach($projects as $project)
                         <div
                             class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
-                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset($project->image) }}"
-                                alt="Work History Image">
+                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $project->image) }}"
+                                alt="Project Image">
                             <div class="flex flex-col flex-grow p-4 text-center">
                                 <h4 class="font-bold text-lg dark:text-white">{{ $project->title }}</h4>
                                 <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">

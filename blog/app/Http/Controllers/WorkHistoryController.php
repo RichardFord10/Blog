@@ -18,12 +18,23 @@ class WorkHistoryController extends Controller
     
     public function store(Request $request)
     {
-        WorkHistory::create($request->all());
-
-        if (Auth::id() != config('permissions.super_user_id')) {
-            return redirect()->route('dashboard')->withErrors('You are not authorized to create posts.');
+        $validated_data = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'company' => 'required',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date',
+            'image' => 'nullable|image',
+        ]);
+    
+        $validated_data['author_id'] = Auth::id(); 
+    
+        if ($request->hasFile('image')) {
+            $validated_data['image'] = $request->file('image')->store('images/work_history', 'public');
         }
-
+    
+        $work_history = WorkHistory::create($validated_data);
+    
         return redirect()->route('portfolio')->with('success', 'Work history added successfully.');
     }
     
@@ -55,14 +66,36 @@ class WorkHistoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'company' => 'required',
+            'start_date' => 'nullable',
+            'end_date' => 'nullable',
+            'image' => 'nullable|image',
+        ]);
+    
+        $work_history = WorkHistory::findOrFail($id);
+        $update_data = $request->all();
+    
+        if ($request->hasFile('image')) {
+            $update_data['image'] = $request->file('image')->store('images/work_history', 'public');
+        }
+    
+        $work_history->update($update_data);
+    
+        return redirect()->route('dashboard')->with('success', 'Work history updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $work_history = WorkHistory::findOrFail($id);
+
+        $work_history->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Work History deleted successfully');
     }
 }
