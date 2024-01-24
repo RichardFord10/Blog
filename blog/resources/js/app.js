@@ -28,10 +28,16 @@ import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-javascript';
 import "prismjs/themes/prism-twilight.css";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 window.Alpine = Alpine;
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init();
+});
 
 tinymce.init({
     selector: '#content',

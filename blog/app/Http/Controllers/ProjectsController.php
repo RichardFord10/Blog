@@ -40,7 +40,7 @@ class ProjectsController extends Controller
     
     public function index()
     {
-        $projects = Projects::all();
+        $projects = Projects::orderBy('created_at', 'desc')->get();
         return view('portfolio', compact('projects'));
     }
 
