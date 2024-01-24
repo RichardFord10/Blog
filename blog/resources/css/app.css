@@ -105,7 +105,7 @@ body {
 
 /* Specificity for Prism code styling */
 pre[class*="language-"] {
-  margin: 0;
+  margin: 0!important;
   border: none!important;
   background: #000!important; /* If you want the code block to have a black background */
 }

@@ -36,8 +36,8 @@
                                         {{ strip_tags($post->title) }}</h3>
                                 </div>
                                 <div class="p-4 text-gray-900 dark:text-gray-100 flex justify-between items-center">
-                                    <p class="text-sm font-body text-gray-600 dark:text-gray-300 mt-2">{!!
-                                        Str::limit($post->content, 35) !!}</p>
+                                    <p class="text-sm font-body text-gray-600 dark:text-gray-300 mt-2">
+                                        {!! Str::limit(strip_tags($post->content), 100) !!}
                                     <div class="button-group inline flex">
                                         <a href="{{ route('posts.edit', $post->id) }}"
                                             class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
