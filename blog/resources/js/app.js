@@ -26,7 +26,7 @@ import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-yaml';
 import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-javascript';
-import  "prismjs/themes/prism-twilight.css";
+import "prismjs/themes/prism-twilight.css";
 
 
 window.Alpine = Alpine;
@@ -48,30 +48,29 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 //copy code
 document.querySelectorAll('.copy-code').forEach((button) => {
-    button.addEventListener('click', function() {
-      const code = this.parentNode.nextElementSibling.querySelector('code').innerText;
-      const textarea = document.createElement('textarea');
-      textarea.value = code;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      textarea.remove();
-      
-      // Optional: Show a message that the code was copied
-      button.textContent = 'Copied!';
-      setTimeout(() => { button.textContent = 'Copy code'; }, 2000);
-    });
-  });
-  
-if(document.getElementById('postForm'))
-{
+    button.addEventListener('click', function () {
+        const code = this.parentNode.nextElementSibling.querySelector('code').innerText;
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        textarea.remove();
 
-    document.getElementById('postForm').addEventListener('submit', function() {
+        // Optional: Show a message that the code was copied
+        button.textContent = 'Copied!';
+        setTimeout(() => { button.textContent = 'Copy code'; }, 2000);
+    });
+});
+
+if (document.getElementById('postForm')) {
+
+    document.getElementById('postForm').addEventListener('submit', function () {
         var contentTextarea = document.getElementById('content');
         if (tinymce.get('content').getContent().trim() === '') {
             contentTextarea.style.display = 'block';
         } else {
-            contentTextarea.style.display = 'none'; 
+            contentTextarea.style.display = 'none';
             contentTextarea.value = tinymce.get('content').getContent();
         }
     });
@@ -87,7 +86,7 @@ window.chat = () => {
             if (this.message.trim() === '') {
                 return;
             }
-            
+
             // Add the message to the messages array
             this.messages.push({ text: this.message, type: 'sent' });
 
@@ -110,14 +109,14 @@ window.chat = () => {
                 },
                 body: JSON.stringify(postData)
             })
-            .then(response => response.json())
-            .then(data => {
-                // Add the received message to the messages array
-                this.messages.push({ text: data.choices[0].text, type: 'received' });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    // Add the received message to the messages array
+                    this.messages.push({ text: data.choices[0].text, type: 'received' });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
     };
 };
@@ -159,8 +158,8 @@ window.dinoGame = () => {
             let currentRight = parseInt(this.obstacleElement.style.right, 10);
             currentRight += 6; // Fixed obstacle speed
             this.obstacleElement.style.right = `${currentRight}px`;
-        
-            
+
+
             const gameAreaWidth = parseInt(window.getComputedStyle(this.dinoElement.parentElement).width, 10);
             if (currentRight >= gameAreaWidth) {
                 this.generateObstacle();
@@ -171,11 +170,11 @@ window.dinoGame = () => {
             const minHeight = 1;
             const maxHeight = 3;
             const randomHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
-            
+
             this.obstacleElement.style.right = '100%';
             this.obstacleElement.style.bottom = `${randomHeight}px`;
         },
-        
+
 
         jump() {
             if (this.isJumping) return;
@@ -194,7 +193,7 @@ window.dinoGame = () => {
             }, 20);
         },
 
-        fallDown() { 
+        fallDown() {
             let jumpHeight = parseInt(window.getComputedStyle(this.dinoElement).bottom, 10);
 
             const fallInterval = setInterval(() => {
@@ -211,17 +210,17 @@ window.dinoGame = () => {
         checkCollision() {
             const dinoRect = this.dinoElement.getBoundingClientRect();
             const obstacleRect = this.obstacleElement.getBoundingClientRect();
-        
+
             // Adjust for any transparent or non-collision areas
             const dinoCollisionOffset = { right: 20, bottom: 20 }; // Adjust these values as needed
             const obstacleCollisionOffset = { left: 20, top: 20 }; // Adjust these values as needed
-        
+
             // Check for overlap considering offsets
             const isCollision = (dinoRect.right - dinoCollisionOffset.right) > (obstacleRect.left + obstacleCollisionOffset.left) &&
-                                (dinoRect.bottom - dinoCollisionOffset.bottom) > (obstacleRect.top + obstacleCollisionOffset.top) &&
-                                dinoRect.left < obstacleRect.right &&
-                                dinoRect.top < obstacleRect.bottom;
-        
+                (dinoRect.bottom - dinoCollisionOffset.bottom) > (obstacleRect.top + obstacleCollisionOffset.top) &&
+                dinoRect.left < obstacleRect.right &&
+                dinoRect.top < obstacleRect.bottom;
+
             if (isCollision) {
                 console.log('Collision Detected');
                 clearInterval(this.gameInterval);
@@ -231,7 +230,7 @@ window.dinoGame = () => {
                 // this.startGame(); // Reset game or other game over logic
             }
         }
-        
+
     };
 }
 
@@ -247,9 +246,8 @@ function checkFile() {
 }
 
 // Add an event listener to your download button
-if(document.getElementById('download'))
-{
-    document.getElementById('download').addEventListener('click', function() {
+if (document.getElementById('download')) {
+    document.getElementById('download').addEventListener('click', function () {
         downloadCSV('table-data');
     });
 }
@@ -265,52 +263,53 @@ document.addEventListener('alpine:init', () => {
         tableGenerated: false,
         hasCsvData: false,
         showDownloadButton: false,
+
         
         //csv
-    downloadCSV(csvName) {
-    // Select the table
-    var table = document.querySelector('table');
-    var csvString = '';
-    
-    // Initialize variable to track if any data rows are found
-    var hasDataRows = false;
+        downloadCSV() {
+            // Select the table
+            var table = document.querySelector('table');
+            var csvString = '';
 
-    // Loop through each row in the table
-    for (var row of table.rows) {
-        var rowData = [];
+            // Initialize variable to track if any data rows are found
+            var hasDataRows = false;
 
-        // Loop through each cell in the row
-        for (var cell of row.cells) {
-            // Add the cell data to the rowData array, ensuring to escape any commas or double-quotes
-            rowData.push('"' + cell.innerText.replace(/"/g, '""') + '"');
-        }
+            // Loop through each row in the table
+            for (var row of table.rows) {
+                var rowData = [];
 
-        // Check if this is a data row (not a header) and has content
-        if (table.rows[0] !== row && rowData.join('').replace(/"/g, '').trim() !== '') {
-            hasDataRows = true;
-        }
+                // Loop through each cell in the row
+                for (var cell of row.cells) {
+                    // Add the cell data to the rowData array, ensuring to escape any commas or double-quotes
+                    rowData.push('"' + cell.innerText.replace(/"/g, '""') + '"');
+                }
 
-        // Join rowData with commas and add a newline character to form the CSV string
-        csvString += rowData.join(',') + '\r\n';
-    }
+                // Check if this is a data row (not a header) and has content
+                if (table.rows[0] !== row && rowData.join('').replace(/"/g, '').trim() !== '') {
+                    hasDataRows = true;
+                }
 
-    // Check if there were any data rows
-    if (!hasDataRows) {
-        alert("There is no data to download.");
-        return;
-    }
+                // Join rowData with commas and add a newline character to form the CSV string
+                csvString += rowData.join(',') + '\r\n';
+            }
 
-    // Create a Blob from the CSV string
-    var blob = new Blob([csvString], { type: 'text/csv' });
+            // Check if there were any data rows
+            if (!hasDataRows) {
+                alert("There is no data to download.");
+                return;
+            }
 
-    // Create a link element, set the filename, and trigger the download
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = csvName + '.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-},
+            // Create a Blob from the CSV string
+            var blob = new Blob([csvString], { type: 'text/csv' });
+
+            // Create a link element, set the filename, and trigger the download
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = "data" + '.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        },
 
         createTable() {
             this.showDownloadButton = true;
@@ -320,34 +319,40 @@ document.addEventListener('alpine:init', () => {
 
         adjustTable() {
 
-            
+
             this.table = Array.from({ length: this.rows }, (_, rowIndex) => {
                 // Ensure the row exists or create a new one
                 const row = this.table[rowIndex] || [];
                 // Adjust the columns, preserving existing data
                 return Array.from({ length: this.columns }, (_, colIndex) => row[colIndex] || '');
             });
-        
-            // Updated console logs
-            // console.log("showUploadForm: " + this.showUploadForm);
-            // console.log("showTableForm: " + this.showTableForm);
-            // console.log("rows: " + this.rows);
-            // console.log("columns: " + this.columns);
-            // console.log("table: ", this.table);
-            // console.log("tableGenerated: " + this.tableGenerated);
-            // console.log("hasCsvData: " + this.hasCsvData);
-            // console.log("showDownloadButton: " + this.showDownloadButton);
 
-            if(this.checkCsvData())
-            {
+            
+
+            if (this.checkCsvData()) {
                 this.showDownloadButton = true;
             }
         },
 
         // Call adjustTable whenever rows or columns change
         init() {
-            this.$watch('rows', () => this.adjustTable());
-            this.$watch('columns', () => this.adjustTable());
+            this.$watch('rows', (newRows) => {
+                if (newRows > 20) {
+                    this.rows = 20; // Set rows to max if exceeded
+                    this.$refs.rowsInput.value = 20; // Update input field value
+                    this.$refs.rowsInput.dispatchEvent(new Event('input')); // Trigger input event
+                }
+                this.adjustTable();
+            });
+        
+            this.$watch('columns', (newColumns) => {
+                if (newColumns > 10) {
+                    this.columns = 10; // Set columns to max if exceeded
+                    this.$refs.columnsInput.value = 10; // Update input field value
+                    this.$refs.columnsInput.dispatchEvent(new Event('input')); // Trigger input event
+                }
+                this.adjustTable();
+            });
         },
 
         toggleForms() {
@@ -383,7 +388,7 @@ document.addEventListener('alpine:init', () => {
             this.table = [];
         },
 
-        
+
 
     }));
 

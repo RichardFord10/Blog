@@ -23,6 +23,13 @@ h3 {
     text-align: center;
 }
 
+@media (max-width: 768px) { /* Adjust this media query based on your needs */
+  .table-container {
+      max-width: 100% !important;
+      overflow-x: auto!important;
+  }
+}
+
 #gameArea {
     width: 475px;
     height: 200px;
@@ -30,6 +37,7 @@ h3 {
     overflow: hidden;
     z-index: 1;
 }
+
 .dino {
     background-image: url('/public/images/game/dino.png'); 
     background-size: cover;
@@ -38,6 +46,7 @@ h3 {
     position: absolute;
     bottom: 5px; /* Adjust as necessary */
   }
+
 .obstacle {
     background-image: url('/public/images/game/cloud.png'); 
     background-size: cover;

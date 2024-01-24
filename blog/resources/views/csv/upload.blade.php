@@ -33,21 +33,22 @@
                 </button>
             </div>
             <!-- Table Creation Form -->
-            <div x-show="showTableForm" class="mb-6 py-4">
-                <div class="flex justify-center space-x-2">
-
-                <input x-model="rows" type="number" class="border rounded py-2 px-3" placeholder="Rows (max 20)" max="20">
-    <input x-model="columns" type="number" class="border rounded py-2 px-3" placeholder="Columns (max 10)" max="10">
+            <div x-show="showTableForm" class="mb-6 py-4" x-cloak>
+                <div class="flex justify-center space-x-2 text-black">
+                    <input x-ref="rowsInput" x-model="rows" type="number" class="border rounded py-2 px-3" placeholder="Rows (max 20)">
+                    <input x-ref="columnsInput" x-model="columns" type="number" class="border rounded py-2 px-3"
+                        placeholder="Columns (max 10)">
                 </div>
             </div>
 
             <!-- Generated Table -->
-            <div class="container mx-auto flex justify-center py-4" x-show="table.length">
+            <div class="container mx-auto flex justify-center py-4 table-container" x-show="table.length" x-cloak>
                 <table class="min-w-full table-auto text-center">
                     <thead class="bg-gray-200">
                         <tr>
                             <template x-for="colIndex in parseInt(columns)">
-                                <th class="px-4 py-2" x-text="'Column ' + colIndex" contenteditable="true"></th>
+                                <th class="px-4 py-2 text-black" x-text="'Column ' + colIndex" contenteditable="true">
+                                </th>
                             </template>
                         </tr>
                     </thead>
@@ -56,19 +57,19 @@
                             <tr>
                                 <template x-for="colIndex in parseInt(columns)">
                                     <td class=" text-white border px-4 py-2" contenteditable="true"
-                                    x-text="table[rowIndex-1]?.[colIndex-1] || ''"></td>
+                                        x-text="table[rowIndex-1]?.[colIndex-1] || ''"></td>
                                 </template>
                             </tr>
                         </template>
                     </tbody>
                 </table>
             </div>
-                <div x-show="table.length > 0" class="flex justify-center mt-4" >
-        <button @click="checkCsvData ? downloadCSV() : adjustTable()"
-            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            x-text="checkCsvData ? 'Download CSV' : 'Create'">
-        </button>
-    </div>
+            <div x-show="table.length > 0" class="flex justify-center mt-4" x-cloak>
+                <button @click="checkCsvData ? downloadCSV() : adjustTable()"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    x-text="checkCsvData ? 'Download CSV' : 'Create'">
+                </button>
+            </div>
             <!-- CSV Table Section -->
             @if (!empty($data))
             <div class="container mx-auto flex justify-center py-4">
@@ -87,7 +88,8 @@
                         @foreach($data as $row)
                         <tr>
                             @foreach($row as $cell)
-                            <td x-on:input="adjustTable()" class="text-white border px-4 py-2" contenteditable='true'>{{ $cell }}</td>
+                            <td x-on:input="adjustTable()" class="text-black border px-4 py-2" contenteditable='true'>
+                                {{ $cell }}</td>
                             @endforeach
                         </tr>
                         @endforeach

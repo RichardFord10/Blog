@@ -1,27 +1,28 @@
 <x-app-layout>
     <div
-        x-data="{ tab: 'posts', getAddRoute() { return (this.tab === 'posts') ? '{{ route('posts.create') }}' : (this.tab === 'workHistory') ? '{{ route('work_history.create') }}' : '{{ route('projects.create') }}'; } }">
+        x-data="{ tab: 'posts', getAddRoute() { return (this.tab === 'posts') ? '{{ route('posts.create') }}' : (this.tab === 'workHistory') ? '{{ route('work_history.create') }}' : '{{ route('projects.create') }}'; } }" class="container-fluid">
         <div class="flex justify-center w-full items-center py-2 bg-white dark:bg-gray-800">
-        <div class="w-full py-2 flex flex-col items-center">
-        <!-- Greeting (aligned left) -->
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                Hello, {{ explode(' ', Auth::user()->name)[0] }}! 👋
-            </h2>
-        <!-- Buttons (centered) -->
-        <div class="flex space-x-2 mt-2">
-            <button @click="tab = 'posts'" :class="{ 'bg-blue-700': tab === 'posts' }"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Posts</button>
-            <button @click="tab = 'workHistory'" :class="{ 'bg-blue-700': tab === 'workHistory' }"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Work History</button>
-            <button @click="tab = 'projects'" :class="{ 'bg-blue-700': tab === 'projects' }"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Projects</button>
-            <a :href="getAddRoute()"
-                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add</a>
-        </div>
-    </div>
+            <div class="w-full py-2 flex flex-col items-center">
+                <!-- Greeting (aligned left) -->
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    Hello, {{ explode(' ', Auth::user()->name)[0] }}! 👋
+                </h2>
+                <!-- Buttons (centered) -->
+                <div class="flex space-x-2 mt-2 container-fluid">
+                    <button @click="tab = 'posts'" :class="{ 'bg-blue-700': tab === 'posts' }"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Posts</button>
+                    <button @click="tab = 'workHistory'" :class="{ 'bg-blue-700': tab === 'workHistory' }"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Work
+                        History</button>
+                    <button @click="tab = 'projects'" :class="{ 'bg-blue-700': tab === 'projects' }"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Projects</button>
+                    <a :href="getAddRoute()"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center">Add</a>
+                </div>
+            </div>
         </div>
         <!-- Tab Content -->
-        <div class="container mx-auto py-6">
+        <div class="container mx-auto py-4">
             <!-- Posts Section -->
             <div x-show="tab === 'posts'">
                 <div class="py-2">
