@@ -1,5 +1,8 @@
 <x-app-layout>
     <div class="container mx-auto p-4">
+    <a href="{{ route('posts.index') }}" class="inline-block">
+            <i class="ml-2 fa fa-chevron-left bold" aria-hidden="true"></i>
+        </a>
         <div class="py-4">{!! $post->title !!}</div>
         <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden">
             <div class="p-4">
