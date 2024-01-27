@@ -6,6 +6,8 @@ use App\Http\Controllers\WorkHistoryController;
 use App\Http\Controllers\ChatGPTController;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\ProductController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,6 +53,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //menu
+Route::get('/products/filter', [ProductController::class, 'filter']);
+Route::resource('products', ProductController::class);
 Route::get('/portfolio', [WorkHistoryController::class, 'index'])->name('portfolio'); 
 Route::resource('posts', PostController::class);
 Route::get('/csv-upload', [CsvController::class, 'index'])->name('csv');

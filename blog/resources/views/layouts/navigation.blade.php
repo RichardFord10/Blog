@@ -50,6 +50,10 @@
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 ChatGPT Clone
                             </a>
+                            <a href="{{ route('products.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                                Product Filter
+                            </a>
                             <!-- Additional feature links can be added here -->
                             <a href="{{ route('upload') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
@@ -134,6 +138,10 @@
                 {{ __('CSV Tool') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                {{ __('Product Filter') }}
+            </x-responsive-nav-link>
+
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="px-4">
@@ -160,7 +168,7 @@
         </div>
     </div>
 </nav>
-@else 
+@else
 <!-- User is not logged in -->
 <nav x-data="{ open: false }"
     class="nav-container bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
@@ -207,18 +215,25 @@
                     <div x-show="open" @click.away="open = false" x-cloak
                         class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
-                        <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
-                {{ __('Blog Posts') }}
-            </x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('posts.index')"
+                                :active="request()->routeIs('posts.index')">
+                                {{ __('Blog Posts') }}
+                            </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')">
-                {{ __('ChatGPT Clone') }}
-            </x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('chat.index')"
+                                :active="request()->routeIs('chat.index')">
+                                {{ __('ChatGPT Clone') }}
+                            </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
-                {{ __('CSV Tool') }}
-            </x-responsive-nav-link>
-                            <!-- Additional feature links can be added here -->
+                            <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
+                                {{ __('CSV Tool') }}
+                            </x-responsive-nav-link>
+
+                            <x-responsive-nav-link :href="route('products.index')"
+                                :active="request()->routeIs('products.index')">
+                                {{ __('Product Filter') }}
+                            </x-responsive-nav-link>
+
                         </div>
                     </div>
                 </div>
@@ -263,18 +278,22 @@
                 {{ __('CSV Tool') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
+                {{ __('Product Filter') }}
+            </x-responsive-nav-link>
+            
             <!-- Responsive Settings Options -->
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
 
                 <div class="mt-3 space-y-1 pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href=" route('login')" :active="request()->routeIs('login')">
-                    {{ __('Login') }}
-                </x-responsive-nav-link>
-                @if (Route::has('register'))
-                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                    {{ __('Register') }}
-                </x-responsive-nav-link>
-                @endif
+                    <x-responsive-nav-link :href=" route('login')" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-responsive-nav-link>
+                    @if (Route::has('register'))
+                    <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
+                    </x-responsive-nav-link>
+                    @endif
 
                 </div>
             </div>
