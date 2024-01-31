@@ -7,6 +7,8 @@ use App\Http\Controllers\ChatGPTController;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SocialController;
+
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +37,9 @@ Route::get('/dashboard', function () {
     $posts = $user->posts; 
     $projects = $user->projects;
     $work_histories = $user->work_histories;
-    return view('/dashboard', compact('posts', 'projects', 'work_histories'));
+    $socials = $user->socials;
+
+    return view('/dashboard', compact('posts', 'projects', 'work_histories', 'socials'));
     
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -45,6 +49,7 @@ Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index'); //
 Route::middleware('auth')->group(function () {
     Route::resource('work_history', WorkHistoryController::class);
     Route::resource('projects', ProjectsController::class);
+    Route::resource('socials', SocialController::class);
     Route::get('posts/review', [PostController::class, 'review'])->name('posts.review');
     Route::post('posts/confirm', [PostController::class, 'confirm'])->name('posts.confirm');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
