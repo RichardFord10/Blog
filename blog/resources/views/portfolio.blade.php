@@ -92,9 +92,9 @@
                     @endforeach
                 </div>
             </div>
-            <!-- Projects Section -->
+            <!-- Socials Section -->
             <div class="mt-10 px-4">
-                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Social</h3>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Socials</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                     @foreach(\App\Models\Socials::all() as $social)
                     <div data-aos="fade-up" data-aos-anchor-placement="top-center"
@@ -118,16 +118,14 @@
                 </div>
             </div>
         </div>
+        <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+            <div class="container mx-auto">
+                <p>&copy; {{ date('Y') }} Richard Ford. All Rights Reserved.</p>
+                <p>Made with ❤️</p>
+                <p>
+                    <a href="mailto:richardford10@gmail.com" class="text-indigo-400 hover:text-indigo-600">Contact</a>
+                </p>
+            </div>
+        </footer>
     </div>
-    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
-        <div class="container mx-auto">
-            <p>&copy; {{ date('Y') }} Richard Ford. All Rights Reserved.</p>
-            <p>Made with ❤️</p>
-            <p>
-                <a href="mailto:richardford10@gmail.com" class="text-indigo-400 hover:text-indigo-600">Contact</a>
-            </p>
-        </div>
-    </footer>
-    </div>
-
 </x-app-layout>
