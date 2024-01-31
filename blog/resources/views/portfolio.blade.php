@@ -84,7 +84,7 @@
                             <!-- Footer section for author and time -->
                             <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-600">
                                 <p class="text-xs text-gray-500 dark:text-gray-400 text-right flex-1">
-                                    {{ $project->created_at->format('F j, Y') }}
+                                    <!-- {{ $project->created_at->format('F j, Y') }} -->
                                 </p>
                             </div>
                         </a>
@@ -109,7 +109,7 @@
                             <!-- Footer section for author and time -->
                             <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-600">
                                 <p class="text-xs text-gray-500 dark:text-gray-400 text-right flex-1">
-                                    {{ $social->created_at->format('F j, Y') }}
+                                    <!-- {{ $social->created_at->format('F j, Y') }} -->
                                 </p>
                             </div>
                         </a>
