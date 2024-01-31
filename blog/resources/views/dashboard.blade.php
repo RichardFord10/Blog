@@ -1,6 +1,13 @@
 <x-app-layout>
-    <div
-        x-data="{ tab: 'posts', getAddRoute() { return (this.tab === 'posts') ? '{{ route('posts.create') }}' : (this.tab === 'workHistory') ? '{{ route('work_history.create') }}' : '{{ route('projects.create') }}'; } }" class="container-fluid">
+    <div x-data="{ 
+            tab: 'posts', 
+            getAddRoute() { 
+                return (this.tab === 'posts') ? '{{ route('posts.create') }}' 
+                    : (this.tab === 'workHistory') ? '{{ route('work_history.create') }}' 
+                    : (this.tab === 'socials') ? '{{ route('socials.create') }}'
+                    : '{{ route('projects.create') }}'; 
+            } 
+        }" class="container-fluid">
         <div class="flex justify-center w-full items-center py-2 bg-white dark:bg-gray-800">
             <div class="w-full py-2 flex flex-col items-center">
                 <!-- Greeting (aligned left) -->
