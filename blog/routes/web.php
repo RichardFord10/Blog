@@ -26,13 +26,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-// Route::get('/game', function () {
-    //     return view('game.index');
-    // })->name('game');
-
-Route::get('/', function () {
-    return view('portfolio.index');
-})->name('home');
+Route::get('/', [PortfolioController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     $user = Auth::user();
