@@ -7,7 +7,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('/') }}">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('images/profile2.jpg') }}" alt="Profile Image"
                             class="h-9 w-auto rounded-full">
                     </a>
