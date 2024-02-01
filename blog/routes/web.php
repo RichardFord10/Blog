@@ -30,9 +30,7 @@ use Illuminate\Support\Facades\Auth;
     //     return view('game.index');
     // })->name('game');
 
-Route::get('/', function () {
-    return view('portfolio.index');
-});
+Route::get('/', [PortfolioController::class, 'index']);
 
 Route::get('/dashboard', function () {
     $user = Auth::user();
@@ -49,10 +47,10 @@ Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send'); // 
 Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index'); // Serves the chat page
 
 Route::middleware('auth')->group(function () {
+    Route::resource('portfolio', PortfolioController::class);
     Route::resource('work_history', WorkHistoryController::class);
     Route::resource('projects', ProjectsController::class);
     Route::resource('socials', SocialController::class);
-    Route::resource('portfolio', PortfolioController::class);
     Route::get('posts/review', [PostController::class, 'review'])->name('posts.review');
     Route::post('posts/confirm', [PostController::class, 'confirm'])->name('posts.confirm');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
