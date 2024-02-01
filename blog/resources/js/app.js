@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 tinymce.init({
-    selector: '#content',
+    selector: '#content, #about',
     skin: false,
     content_css: false,
     plugins: 'code lists link image table charmap media',

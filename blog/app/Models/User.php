@@ -66,4 +66,10 @@ class User extends Authenticatable
         return $this->hasMany(Socials::class, 'author_id');
     }
 
+
+    public function about()
+    {
+        return $this->hasMany(Portfolio::class, 'author_id');
+    }
+
 }

@@ -17,23 +17,7 @@
                 <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm Richard Ford</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed" data-aos="fade-up"
                     data-aos-anchor-placement="top-center">
-                    I'm a web developer with roots in digital marketing. I offer a distinctive mix of coding prowess
-                    and
-                    strategic marketing insight.
-                    <br><br>
-                    Skilled in full-stack development, I operate fluently through PHP, Python, JavaScript, Bash,
-                    along
-                    with databases like Postgresql and Mysql, with expertise in frameworks such as Codeigniter,
-                    Laravel,
-                    and Drupal.
-                    <br><br>
-                    My journey began in a warehouse as an order picker, where I cultivated my passion for finding
-                    more
-                    elegant
-                    solutions to problems. This eventually led me to learn programming, opening my way into the
-                    tech world. Today, I leverage my skills at Bucknell University creating web solutions that
-                    prioritize user experience.
-                    Reach out to let me know how I can help you reach your technical goals!
+                    {!!$about!!}
                 </p>
             </div>
 
@@ -43,7 +27,7 @@
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Work History</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                     <!-- Work History Tiles -->
-                    @foreach(\App\Models\WorkHistory::all() as $work)
+                    @foreach($work_history as $work)
                     <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full"
                         data-aos="fade-up" data-aos-anchor-placement="top-center">
                         <!-- Image Section -->
@@ -71,7 +55,7 @@
             <div class="mt-10 px-4">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Projects</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
-                    @foreach(\App\Models\Projects::all() as $project)
+                    @foreach($projects as $project)
                     <div data-aos="fade-up" data-aos-anchor-placement="top-center"
                         class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
                         <a target="_blank" href="{{ $project->link }}" class="block hover:underline">
@@ -96,7 +80,7 @@
             <div class="mt-10 px-4">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Socials</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
-                    @foreach(\App\Models\Socials::all() as $social)
+                    @foreach($socials as $social)
                     <div data-aos="fade-up" data-aos-anchor-placement="top-center"
                         class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
                         <a target="_blank" href="{{ $social->link }}" class="block hover:underline">
