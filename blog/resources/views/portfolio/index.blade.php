@@ -18,7 +18,7 @@
                 <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed" data-aos="fade-up"
                     data-aos-anchor-placement="top-center">
                     @isset($about)
-                        {!!$about!!}
+                    {!!$about!!}
                     @endisset
                 </p>
             </div>
@@ -28,7 +28,8 @@
             <div class="mt-10 px-4">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Work History</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
-                    <!-- Work History Tiles -->
+                <!-- Tile -->
+                @isset($work_history)
                     @foreach($work_history as $work)
                     <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full"
                         data-aos="fade-up" data-aos-anchor-placement="top-center">
@@ -50,6 +51,7 @@
                         </div>
                     </div>
                     @endforeach
+                @endisset
                 </div>
             </div>
 
@@ -57,6 +59,7 @@
             <div class="mt-10 px-4">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Projects</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+                @isset($projects)
                     @foreach($projects as $project)
                     <div data-aos="fade-up" data-aos-anchor-placement="top-center"
                         class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
@@ -67,7 +70,6 @@
                                 {{ $project->title }}
                             </h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">{{ $project->description }}</p>
-                            <!-- Footer section for author and time -->
                             <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-600">
                                 <p class="text-xs text-gray-500 dark:text-gray-400 text-right flex-1">
                                     <!-- {{ $project->created_at->format('F j, Y') }} -->
@@ -76,12 +78,14 @@
                         </a>
                     </div>
                     @endforeach
+                @endisset
                 </div>
             </div>
             <!-- Socials Section -->
             <div class="mt-10 px-4">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Socials</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+                @isset($socials)
                     @foreach($socials as $social)
                     <div data-aos="fade-up" data-aos-anchor-placement="top-center"
                         class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 p-4">
@@ -92,7 +96,6 @@
                                 {{ $social->title }}
                             </h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">{{ $social->description }}</p>
-                            <!-- Footer section for author and time -->
                             <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-600">
                                 <p class="text-xs text-gray-500 dark:text-gray-400 text-right flex-1">
                                     <!-- {{ $social->created_at->format('F j, Y') }} -->
@@ -101,6 +104,7 @@
                         </a>
                     </div>
                     @endforeach
+                @endisset
                 </div>
             </div>
         </div>
