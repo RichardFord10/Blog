@@ -17,7 +17,9 @@
                 <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm Richard Ford</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed" data-aos="fade-up"
                     data-aos-anchor-placement="top-center">
-                    {!!$about!!}
+                    @isset($about)
+                        {!!$about!!}
+                    @endisset
                 </p>
             </div>
 
