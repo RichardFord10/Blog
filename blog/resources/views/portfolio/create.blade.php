@@ -8,12 +8,12 @@
                 <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Add About Info</h2>
             </div>      
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
-                <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('portfolio.store') }}" method="POST">
                     @csrf
                     <div class="mb-4">
                         <label for="description" class="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">Description:</label>
                         <textarea name="about" id="about" placeholder="About"
-                                  class="shadow appearance-none border rounded w-full h-48 py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+                                  class="shadow appearance-none border rounded w-full h-48 py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                     </div>
                     <!-- Checkbox for 'Active' -->
                     <div class="mb-4">
@@ -24,7 +24,7 @@
                         </label>
                     </div>
                     <div class="flex justify-center">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Social</button>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add About</button>
                     </div>
                 </form>
             </div>
