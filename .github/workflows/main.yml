@@ -87,6 +87,6 @@ jobs:
           sudo -u rford composer install
           sudo -u rford npm install
           sudo -u rford npm run build
-          sudo -u rford php artisan migrate
+          sudo -u rford php artisan migrate --force
           sudo -u rford php artisan cache:clear
           sudo -u rford php artisan config:clear
