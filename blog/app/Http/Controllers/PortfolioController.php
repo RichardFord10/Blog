@@ -17,7 +17,9 @@ class PortfolioController extends Controller
         $validated_data = $request->validate([
             'about' => 'required|max:5000',
             'active' => 'sometimes',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
         ]);
     
         $validated_data['active'] = $request->has('active');
@@ -26,7 +28,7 @@ class PortfolioController extends Controller
     
         $about = Portfolio::create($validated_data);
     
-        return redirect()->route('portfolio')->with('success', 'About info added successfully.');
+        return redirect()->route('dashboard')->with('success', 'About info added successfully.');
     }
 
     public function index()
@@ -59,7 +61,8 @@ class PortfolioController extends Controller
             'about' => 'required|max:5000',
             'active' => 'sometimes',
             'image' => 'nullable|image',
-
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
         ]);
         
         if ($request->hasFile('image')) {
