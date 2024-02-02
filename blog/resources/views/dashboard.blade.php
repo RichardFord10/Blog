@@ -17,10 +17,10 @@
                 </h2>
                 <!-- Buttons (centered) -->
                 <div class="flex space-x-2 mt-2 container-fluid">
-                <button @click="tab = 'about'" :class="{ 'bg-blue-700': tab === 'about' }"
+                    <button @click="tab = 'about'" :class="{ 'bg-blue-700': tab === 'about' }"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">About</button>
                     <button @click="tab = 'posts'" :class="{ 'bg-blue-700': tab === 'posts' }"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Posts</button>
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Blogs</button>
                     <button @click="tab = 'workHistory'" :class="{ 'bg-blue-700': tab === 'workHistory' }"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Work
                         History</button>
@@ -82,8 +82,8 @@
                         @foreach($work_histories as $work)
                         <div
                             class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
-                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}"
-                                alt="Work History Image">
+                            <img class="h-40 w-40 object-cover mt-2 mx-auto"
+                                src="{{ asset('storage/' . $work->image) }}" alt="Work History Image">
                             <div class="flex flex-col flex-grow p-4 text-center">
                                 <h4 class="font-bold text-lg dark:text-white">{{ $work->title }}</h4>
                                 <h4 class="font-bold text-lg dark:text-white mb-2">{{ $work->company }}</h4>
@@ -130,8 +130,8 @@
                         @foreach($projects as $project)
                         <div
                             class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
-                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $project->image) }}"
-                                alt="Project Image">
+                            <img class="h-40 w-40 object-cover mt-2 mx-auto"
+                                src="{{ asset('storage/' . $project->image) }}" alt="Project Image">
                             <div class="flex flex-col flex-grow p-4 text-center">
                                 <h4 class="font-bold text-lg dark:text-white">{{ $project->title }}</h4>
                                 <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">
@@ -175,8 +175,8 @@
                         @foreach($socials as $social)
                         <div
                             class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
-                            <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $social->image) }}"
-                                alt="Project Image">
+                            <img class="h-40 w-40 object-cover mt-2 mx-auto"
+                                src="{{ asset('storage/' . $social->image) }}" alt="Project Image">
                             <div class="flex flex-col flex-grow p-4 text-center">
                                 <h4 class="font-bold text-lg dark:text-white">{{ $social->title }}</h4>
                                 <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">
@@ -219,6 +219,14 @@
                         @foreach($portfolio as $info)
                         <div
                             class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
+                            <div class="inline-block">
+                                <div class="flex justify-center mt-1 mb-1">
+                                    @isset($info->image)
+                                    <img src="{{ asset('storage/' . $info->image) }}" alt="Profile Image"
+                                        class="rounded-full object-cover object-center" style="max-width: 100px; max-height: 100px; ">
+                                    @endisset
+                                </div>
+                            </div>
                             <div class="flex flex-col flex-grow p-4 text-center">
                                 <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">
                                     {{ $info->about }}</p>
