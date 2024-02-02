@@ -6,28 +6,48 @@
         <div class="max-w-lg mx-auto">
             <div class="flex justify-center mb-6">
                 <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Add About Info</h2>
-            </div>      
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
-                <form action="{{ route('portfolio.store') }}" method="POST">
-                    @csrf
+            </div>
+            <form action="{{ route('portfolio.store') }}" method="POST">
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
+                    <div class="flex items-start justify-center space-x-6">
+                        @csrf
+                        <div
+                            class="bg-dark-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition relative">
+                            <label for="image" class="cursor-pointer block">
+                                <div
+                                    class="flex flex-col p-4 border-2 border-dashed rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </label>
+                            <input type="file" name="image" id="image" class="hidden" onchange="previewImage();">
+                        </div>
+                        <!-- Image Preview Container -->
+                        <div id="image-preview" class="hidden">
+                            <img id="preview-img" src="#" alt="Image preview" class="rounded-full"
+                                style="max-width: 50px; max-height: 50px;">
+                        </div>
+                    </div>
                     <div class="mb-4">
-                        <label for="description" class="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">Description:</label>
+                        <label for="description"
+                            class="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">Description:</label>
                         <textarea name="about" id="about" placeholder="About"
-                                  class="shadow appearance-none border rounded w-full h-48 py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                            class="shadow appearance-none border rounded w-full h-48 py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                     </div>
                     <!-- Checkbox for 'Active' -->
                     <div class="mb-4">
                         <label for="active" class="inline-flex items-center">
                             <input type="checkbox" id="active" name="active"
-                                   class="shadow border rounded text-blue-500 focus:outline-none focus:shadow-outline" />
+                                class="shadow border rounded text-blue-500 focus:outline-none focus:shadow-outline" />
                             <span class="ml-2 text-gray-700 dark:text-gray-200 text-sm font-bold">Active</span>
                         </label>
                     </div>
                     <div class="flex justify-center">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add About</button>
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add
+                            About</button>
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
     </div>
 </x-app-layout>

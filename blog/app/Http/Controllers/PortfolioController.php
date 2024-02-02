@@ -17,6 +17,7 @@ class PortfolioController extends Controller
         $validated_data = $request->validate([
             'about' => 'required|max:5000',
             'active' => 'sometimes',
+            'image' => 'nullable|image'
         ]);
     
         $validated_data['active'] = $request->has('active');
@@ -33,9 +34,9 @@ class PortfolioController extends Controller
         $work_history = WorkHistory::all();
         $projects = Projects::all();
         $socials = Socials::all();
-        $about = Portfolio::where('active', true)->orderBy('updated_at', 'desc')->value('about');
-                
-        return view('portfolio.index', compact('work_history', 'projects', 'socials', 'about'));
+        $portfolio = Portfolio::where('active', true)->orderBy('updated_at', 'desc')->first();
+        
+        return view('portfolio.index', compact('work_history', 'projects', 'socials', 'portfolio'));
     }
 
     public function create()
@@ -46,8 +47,8 @@ class PortfolioController extends Controller
 
     public function edit(string $id)
     {
-        $about = Portfolio::findOrFail($id);
-        return view('portfolio.edit', compact('about'));
+        $portfolio = Portfolio::findOrFail($id);
+        return view('portfolio.edit', compact('portfolio'));
         
     }
 
@@ -57,15 +58,22 @@ class PortfolioController extends Controller
         $validated_data = $request->validate([
             'about' => 'required|max:5000',
             'active' => 'sometimes',
+            'image' => 'nullable|image',
+
         ]);
+        
+        if ($request->hasFile('image')) {
+            $validated_data['image'] = $request->file('image')->store('images/portfolio', 'public');
+        }
         
         $validated_data['active'] = $request->has('active');
     
-        $about = Portfolio::findOrFail($id);
-        $about->update($validated_data);
+        $portfolio = Portfolio::findOrFail($id);
+        $portfolio->update($validated_data);
     
         return redirect()->route('dashboard')->with('success', 'About updated successfully.');
     }
+    
     
 
 
