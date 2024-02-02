@@ -6,8 +6,10 @@
             <!-- Photo -->
             <div class="inline-block">
                 <div class="h-48 w-48 rounded-full overflow-hidden shadow-sm mx-auto">
-                    <img src="{{ asset('images/profile.jpg') }}" alt="Profile Image"
+                @isset($portfolio->image)
+                    <img src="{{ asset('storage/' . $portfolio->image) }}" alt="Profile Image"
                         class="w-full h-full object-cover object-center">
+                @endisset
                 </div>
             </div>
 
@@ -17,8 +19,8 @@
                 <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm Richard Ford</h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed" data-aos="fade-up"
                     data-aos-anchor-placement="top-center">
-                    @isset($about)
-                    {!!$about!!}
+                    @isset($portfolio->about)
+                    {!!$portfolio->about!!}
                     @endisset
                 </p>
             </div>

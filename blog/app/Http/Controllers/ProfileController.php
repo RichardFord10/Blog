@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ImageUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,23 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public function upload(ImageUpdateRequest $request): RedirectResponse
+    {
+        $user = $request->user();
+        
+
+
+        if ($request->hasFile('image')) {
+            
+            $path = $request->file('image')->store('images/profile', 'public');
+            $user->image = $path; 
+            $user->save();
+    
+            return Redirect::route('profile.edit')->with('status', 'Image updated successfully.');
+
+        }
     }
 
     /**

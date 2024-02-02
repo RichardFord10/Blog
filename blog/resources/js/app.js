@@ -35,9 +35,6 @@ AOS.init();
 
 window.Alpine = Alpine;
 
-document.addEventListener('DOMContentLoaded', function() {
-    AOS.init();
-});
 
 tinymce.init({
     selector: '#content, #about',
@@ -50,6 +47,25 @@ tinymce.init({
 //Prism syntax highlighting
 document.addEventListener('DOMContentLoaded', (e) => {
     Prism.highlightAll();
+
+    var imageElement = document.getElementById('image');
+
+    if (imageElement) {
+        imageElement.addEventListener('change', function() {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview-img').src = e.target.result;
+                    document.getElementById('image-preview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    AOS.init();
+
 });
 
 //copy code
@@ -251,12 +267,14 @@ function checkFile() {
     }
 }
 
+
 // Add an event listener to your download button
 if (document.getElementById('download')) {
     document.getElementById('download').addEventListener('click', function () {
         downloadCSV('table-data');
     });
 }
+
 
 
 document.addEventListener('alpine:init', () => {
@@ -402,10 +420,6 @@ document.addEventListener('alpine:init', () => {
 
 
 });
-
-
-
-
 
 
 Alpine.start();

@@ -61,6 +61,10 @@ h3 {
     padding: 0px;
 }
 
+label:hover .absolute {
+  opacity: 1;
+}
+
 [x-cloak] {
   display: none;
 }

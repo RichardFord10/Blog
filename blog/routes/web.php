@@ -34,9 +34,9 @@ Route::get('/dashboard', function () {
     $projects = $user->projects;
     $work_histories = $user->work_histories;
     $socials = $user->socials;
-    $abouts = $user->about;
+    $portfolio = $user->portfolio;
 
-    return view('/dashboard', compact('posts', 'projects', 'work_histories', 'socials', 'abouts'));
+    return view('/dashboard', compact('posts', 'projects', 'work_histories', 'socials', 'portfolio'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send'); // Handles sending messages
@@ -49,15 +49,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('socials', SocialController::class);
     Route::get('posts/review', [PostController::class, 'review'])->name('posts.review');
     Route::post('posts/confirm', [PostController::class, 'confirm'])->name('posts.confirm');
+    Route::patch('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
 
 //menu
 Route::get('/products/filter', [ProductController::class, 'filter']);
 Route::resource('products', ProductController::class);
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio'); 
 Route::resource('posts', PostController::class);
 Route::get('/csv-upload', [CsvController::class, 'index'])->name('csv');
 Route::post('/csv-upload', [CsvController::class, 'upload'])->name('upload');

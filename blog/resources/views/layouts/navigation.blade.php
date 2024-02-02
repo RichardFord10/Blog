@@ -8,8 +8,12 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <img src="{{ asset('images/profile2.jpg') }}" alt="Profile Image"
+                        @if(Auth::user()->image)
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="Profile Image"
                             class="h-9 w-auto rounded-full">
+                        @else
+                        <i class="fa fa-home text-white"></i>
+                        @endif
                     </a>
                 </div>
 
@@ -38,10 +42,10 @@
                     <div x-show="open" @click.away="open = false" x-cloak
                         class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
-                            <a href="{{ route('portfolio') }}"
+                            <!-- <a href="{{ route('home') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 Portfolio
-                            </a>
+                            </a> -->
                             <a href="{{ route('posts.index') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 Blog Posts
@@ -122,9 +126,9 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('portfolio')" :active="request()->routeIs('portfolio')">
+            <!-- <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Portfolio') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link> -->
 
             <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                 {{ __('Blog Posts') }}
@@ -178,9 +182,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('portfolio') }}">
-                        <img src="{{ asset('images/profile2.jpg') }}" alt="Profile Image"
-                            class="h-9 w-auto rounded-full">
+                    <a href="{{ route('home') }}">
+                        <i class="fa fa-home text-white"></i>
                     </a>
                 </div>
 
