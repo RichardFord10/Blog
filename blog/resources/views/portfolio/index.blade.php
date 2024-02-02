@@ -16,7 +16,11 @@
             <!-- About Me Text -->
             <div class="mt-4 px-6 lg:px-20">
                 <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">👋 Hello,</h2>
-                <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm {{Auth::user()->name}}</h3>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">I'm 
+                    @isset(Auth::user()->name)
+                        {{Auth::user()->name}}
+                    @endisset
+                </h3>
                 <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed" data-aos="fade-up"
                     data-aos-anchor-placement="top-center">
                     @isset($portfolio->about)
