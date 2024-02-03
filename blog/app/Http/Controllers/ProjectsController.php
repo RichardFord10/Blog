@@ -81,7 +81,7 @@ class ProjectsController extends Controller
         $project = Projects::findOrFail($id);
         $project->update($validated_data);
     
-        return redirect()->route('dashboard')->with('success', 'Project updated successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Project updated successfully.');
     }
 
     /**
@@ -93,6 +93,6 @@ class ProjectsController extends Controller
 
         $project->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Project deleted successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Project deleted successfully');
     }
 }

@@ -79,7 +79,7 @@ class SocialController extends Controller
         $socials = Socials::findOrFail($id);
         $socials->update($validated_data);
     
-        return redirect()->route('dashboard')->with('success', 'Social updated successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Social updated successfully.');
     }
 
     /**
@@ -91,6 +91,6 @@ class SocialController extends Controller
 
         $socials->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Social deleted successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Social deleted successfully');
     }
 }

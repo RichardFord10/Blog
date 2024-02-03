@@ -28,7 +28,7 @@ class PortfolioController extends Controller
     
         $about = Portfolio::create($validated_data);
     
-        return redirect()->route('dashboard')->with('success', 'About info added successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'About info added successfully.');
     }
 
     public function index()
@@ -74,7 +74,7 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::findOrFail($id);
         $portfolio->update($validated_data);
     
-        return redirect()->route('dashboard')->with('success', 'About updated successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'About updated successfully.');
     }
     
     
@@ -86,7 +86,7 @@ class PortfolioController extends Controller
 
         $about->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Social deleted successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Social deleted successfully');
     }
     
 }   

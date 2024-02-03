@@ -9,6 +9,8 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\DashboardController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -26,24 +28,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/', [PortfolioController::class, 'index'])->name('home');
-
-Route::get('/dashboard', function () {
-    $user = Auth::user();
-    $posts = $user->posts; 
-    $projects = $user->projects;
-    $work_histories = $user->work_histories;
-    $socials = $user->socials;
-    $portfolio = $user->portfolio;
-
-    return view('dashboard.index', compact('posts', 'projects', 'work_histories', 'socials', 'portfolio'));
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send'); // Handles sending messages
-Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index'); // Serves the chat page
-
+//Auth Routes
 Route::middleware('auth')->group(function () {
     Route::resource('portfolio', PortfolioController::class);
+    Route::resource('dashboard', DashboardController::class);
     Route::resource('work_history', WorkHistoryController::class);
     Route::resource('projects', ProjectsController::class);
     Route::resource('socials', SocialController::class);
@@ -53,10 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
 
-//menu
+
+//Non Auth Routes
+Route::get('/', [PortfolioController::class, 'index'])->name('home');
+Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send');
+Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index');
 Route::get('/products/filter', [ProductController::class, 'filter']);
 Route::resource('products', ProductController::class);
 Route::resource('posts', PostController::class);

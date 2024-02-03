@@ -29,7 +29,7 @@ class PostController extends Controller
         ]);
         
         if (Auth::id() != config('permissions.super_user_id')) {
-            return redirect()->route('dashboard')->withErrors('You are not authorized to create posts.');
+            return redirect()->route('dashboard.index')->withErrors('You are not authorized to create posts.');
         }
 
         $request->session()->put('post_preview', $request->only('title', 'content'));
@@ -66,7 +66,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Post deleted successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Post deleted successfully');
     }
 
 

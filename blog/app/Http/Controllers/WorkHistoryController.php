@@ -35,13 +35,12 @@ class WorkHistoryController extends Controller
     
         $work_history = WorkHistory::create($validated_data);
     
-        return redirect()->route('portfolio')->with('success', 'Work history added successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Work history added successfully.');
     }
     
     public function index()
     {
-        $workHistories = WorkHistory::all();
-        return view('portfolio', compact('workHistories'));
+        return view('dashboard.index');
     }
 
     /**
@@ -84,7 +83,7 @@ class WorkHistoryController extends Controller
     
         $work_history->update($update_data);
     
-        return redirect()->route('dashboard')->with('success', 'Work history updated successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Work history updated successfully.');
     }
 
     /**
@@ -96,6 +95,6 @@ class WorkHistoryController extends Controller
 
         $work_history->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Work History deleted successfully');
+        return redirect()->route('dashboard.index')->with('success', 'Work History deleted successfully');
     }
 }
