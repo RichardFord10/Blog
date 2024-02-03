@@ -13,7 +13,7 @@ class SocialController extends Controller
      */
     public function create()
     {
-        return view('socials.create');
+        return view('socials.form');
     }
     
     public function store(Request $request)

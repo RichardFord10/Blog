@@ -13,7 +13,7 @@ class WorkHistoryController extends Controller
      */
     public function create()
     {
-        return view('work_history.create');
+        return view('work_history.form');
     }
     
     public function store(Request $request)

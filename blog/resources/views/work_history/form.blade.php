@@ -5,7 +5,9 @@
             <!-- Heading -->
             @include('work_history.partials.heading')
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
-                <form action="{{ route('work_history.store') }}" method="POST" enctype="multipart/form-data">
+                <form
+                    action="{{ isset($work_history) ? route('work_history.update', $work_history->id) : route('work_history.store') }}"
+                    method="POST" enctype="multipart/form-data">
                     <!-- Title -->
                     @include('work_history.partials.title')
                     <!-- Description -->
