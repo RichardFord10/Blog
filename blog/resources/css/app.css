@@ -20,6 +20,12 @@ h3 {
   @apply text-lg;
 }
 
+@layer base {
+  ul, ol {
+    list-style: revert;
+  }
+}
+
 .game-container {
     text-align: center;
 }
