@@ -4,9 +4,9 @@
         <div class="flex justify-center w-full items-center py-2 bg-white dark:bg-gray-800">
             <!-- Dashboard Navigation -->
             <div class="w-full py-2 flex flex-col items-center">
-                <!-- Greeting  -->
+                <!-- Greeting (aligned left) -->
                 @include('dashboard.partials.greeting')
-                <!-- Buttons  -->
+                <!-- Buttons (centered) -->
                 @include('dashboard.partials.buttons')
             </div>
         </div>
