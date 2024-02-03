@@ -15,7 +15,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('projects.form');
     }
     
     public function store(Request $request)
@@ -58,7 +58,7 @@ class ProjectsController extends Controller
     public function edit(string $id)
     {
         $project = Projects::findOrFail($id);
-        return view('projects.edit', compact('project'));
+        return view('projects.form', compact('project'));
         
     }
 

@@ -56,7 +56,7 @@ class SocialController extends Controller
     public function edit(string $id)
     {
         $socials = Socials::findOrFail($id);
-        return view('socials.edit', compact('socials'));
+        return view('socials.form', compact('socials'));
         
     }
 
