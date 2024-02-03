@@ -36,7 +36,7 @@ Route::get('/dashboard', function () {
     $socials = $user->socials;
     $portfolio = $user->portfolio;
 
-    return view('/dashboard', compact('posts', 'projects', 'work_histories', 'socials', 'portfolio'));
+    return view('dashboard.index', compact('posts', 'projects', 'work_histories', 'socials', 'portfolio'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send'); // Handles sending messages
