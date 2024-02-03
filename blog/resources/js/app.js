@@ -38,10 +38,20 @@ window.Alpine = Alpine;
 
 tinymce.init({
     selector: '#content, #about',
+    setup: function (editor) {
+        editor.ui.registry.addButton('customcode', {
+          text: 'Custom Code',
+          onAction: function () {
+            editor.insertContent('<div class="code-block"><div class="code-header"><span class="code-language"><!-- Language --!></span> <button class="copy-code">Copy code</button></div><pre><code class="language-#"></code></pre></div>');
+          }
+        });
+      },
+    extended_valid_elements: 'div[class|code-header|code-language|copy-code],code[class|language],pre',
+    custom_elements: 'code',
     skin: false,
     content_css: false,
     plugins: 'code lists link image table charmap media',
-    toolbar: 'formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | blockquote | undo redo | cut copy paste | table | charmap | fullscreen | media | hr | removeformat | code',
+    toolbar: 'customcode | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | blockquote | undo redo | cut copy paste | table | charmap | fullscreen | media | hr | removeformat | code ',
 });
 
 //Prism syntax highlighting
