@@ -46,7 +46,7 @@ tinymce.init({
           }
         });
       },
-    extended_valid_elements: 'div[class|code-header|code-language|copy-code],code[class|language],pre',
+    extended_valid_elements: 'div[class|code-header|code-language|copy-code],code[class|language],pre,script[type|language]',
     custom_elements: 'code',
     skin: false,
     content_css: false,
