@@ -7,13 +7,26 @@
                 @foreach($portfolio as $info)
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <div class="inline-block">
-                        <div class="flex justify-center mt-1 mb-1">
+                        <div class="text-center">
                             @isset($info->image)
-                            <img src="{{ asset('storage/' . $info->image) }}" alt="Profile Image"
-                                class="rounded-full object-cover object-center"
-                                style="max-width: 100px; max-height: 100px; ">
+                            <div class="inline-block">
+                                <img src="{{ asset('storage/' . $info->image) }}" alt="Profile Image"
+                                    class="rounded-full object-cover object-center"
+                                    style="max-width: 100px; max-height: 100px;">
+                            </div>
                             @endisset
+                            <div class="mt-2">
+                                <h3 class="text-bold">
+                                    @isset($info->first_name)
+                                    {{$info->first_name}}
+                                    @endisset
+                                    @isset($info->last_name)
+                                    {{$info->last_name}}
+                                    @endisset
+                                </h3>
+                            </div>
                         </div>
+
                     </div>
                     <div class="flex flex-col flex-grow p-4 text-center">
                         <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">
