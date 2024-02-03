@@ -35,13 +35,13 @@ class ProjectsController extends Controller
 
         $project = Projects::create($validated_data);
 
-        return redirect()->route('portfolio')->with('success', 'Project added successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Project added successfully.');
     }
     
     public function index()
     {
         $projects = Projects::orderBy('created_at', 'desc')->get();
-        return view('portfolio', compact('projects'));
+        return view('dashboard.index', compact('projects'));
     }
 
     /**

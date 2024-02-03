@@ -33,13 +33,13 @@ class SocialController extends Controller
 
         $socials = Socials::create($validated_data);
 
-        return redirect()->route('portfolio')->with('success', 'Project added successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Project added successfully.');
     }
     
     public function index()
     {
         $socials = Socials::orderBy('created_at', 'desc')->get();
-        return view('portfolio', compact('socials'));
+        return view('dashboard.index', compact('socials'));
     }
 
     /**

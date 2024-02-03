@@ -4,6 +4,6 @@
             Date:</label>
         <input type="date" name="start_date" id="start_date"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            value="{{$work_history->start_date ?? ''}}" required>
+            value="{{$entity->start_date ?? ''}}" required>
     </div>
 </section>

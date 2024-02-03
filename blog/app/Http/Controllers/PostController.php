@@ -18,7 +18,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        return view('posts.form');
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
+        return view('posts.form', compact('post'));
     }
     
     public function update(Request $request, $id)
@@ -79,14 +79,14 @@ class PostController extends Controller
             return redirect()->route('posts.index')->withErrors('Post not found.');
         }
     
-        return view('posts.single_post', compact('post'));
+        return view('posts.post', compact('post'));
     }
 
     public function review(Request $request)
     {
         $post = (object) $request->session()->get('post_preview');
         if (!$post) {
-            return redirect()->route('posts.create')->withErrors('No post data found.');
+            return redirect()->route('posts.form')->withErrors('No post data found.');
         }
 
         return view('posts.review', compact('post'));
@@ -98,7 +98,7 @@ class PostController extends Controller
         $request->session()->forget('post_preview');
     
         if (!$data) {
-            return redirect()->route('posts.create')->withErrors('No post data to confirm.');
+            return redirect()->route('posts.form')->withErrors('No post data to confirm.');
         }
     
         // Generate the slug from the title
