@@ -35,7 +35,6 @@ AOS.init();
 
 window.Alpine = Alpine;
 
-
 tinymce.init({
     selector: '#content, #about',
     setup: function (editor) {
@@ -44,14 +43,20 @@ tinymce.init({
           onAction: function () {
             editor.insertContent('<div class="code-block"><div class="code-header"><span class="code-language"><!-- Language --!></span> <button class="copy-code">Copy code</button></div><pre><code class="language-#"></code></pre></div>');
           }
-        });
+        }),
+        editor.ui.registry.addButton('customheader', {
+            text: 'Custom Header',
+            onAction: function () {
+              editor.insertContent('<h1 class="mb-1 text-center text-3xl font-heading font-bold text-gray-800 dark:text-white"></h1>');
+            }
+          });
       },
     extended_valid_elements: 'div[class|code-header|code-language|copy-code],code[class|language],pre,script[type|language]',
     custom_elements: 'code',
     skin: false,
     content_css: false,
     plugins: 'code lists link image table charmap media',
-    toolbar: 'customcode | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | blockquote | undo redo | cut copy paste | table | charmap | fullscreen | media | hr | removeformat | code ',
+    toolbar: 'customcode | customheader | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | blockquote | undo redo | cut copy paste | table | charmap | fullscreen | media | hr | removeformat | code ',
 });
 
 //Prism syntax highlighting
