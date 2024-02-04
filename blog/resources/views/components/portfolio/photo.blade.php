@@ -1,4 +1,4 @@
-<section>
+<div>
     <div class="inline-block">
         <div class="h-48 w-48 rounded-full overflow-hidden shadow-sm mx-auto">
             @isset($portfolio->image)
@@ -7,4 +7,4 @@
             @endisset
         </div>
     </div>
-</section>
+</div>

@@ -1,4 +1,4 @@
-<section>
+<div>
     <div x-show="tab === 'projects'" x-cloak>
         <!-- Projects Section -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -42,4 +42,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>

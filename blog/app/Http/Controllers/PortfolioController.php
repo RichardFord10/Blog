@@ -33,12 +33,12 @@ class PortfolioController extends Controller
 
     public function index()
     {
-        $work_history = WorkHistory::all();
+        $work_histories = WorkHistory::all();
         $projects = Projects::all();
         $socials = Socials::all();
-        $portfolio = Portfolio::where('active', true)->orderBy('updated_at', 'desc')->first();
+        $portfolio = Portfolio::where('active', true)->orderBy('updated_at', 'asc')->first();
         
-        return view('portfolio.index', compact('work_history', 'projects', 'socials', 'portfolio'));
+        return view('portfolio.index', compact('work_histories', 'projects', 'socials', 'portfolio'));
     }
 
     public function create()

@@ -43,13 +43,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    //Get user posts
     public function posts()
     {
         return $this->hasMany(Post::class, 'author_id');
     }
 
-    //Get user posts
     public function work_histories()
     {
         return $this->hasMany(WorkHistory::class, 'author_id');
