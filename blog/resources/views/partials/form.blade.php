@@ -1,6 +1,6 @@
 <section>
     <div class="container mx-auto py-6">
-        @include('components.dashboard.return')
+        <x-dashboard.return/>
         <div class="max-w-lg mx-auto">
             <!-- Heading -->
             @include('partials.heading')
