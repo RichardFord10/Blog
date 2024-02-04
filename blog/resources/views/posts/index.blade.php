@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($posts as $post)
             <a href="{{ route('posts.show', $post->slug) }}" class="flex flex-col">
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <div class="p-4 flex-grow">
                         <h2 class="text-base md:text-lg font-heading font-bold text-gray-800 dark:text-white truncate">
                         {{ strip_tags($post->title) }}</h2>

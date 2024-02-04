@@ -19,7 +19,7 @@
 
 <body class="font-sans antialiased">
     @include('partials.messages')
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-custom-gradient">
         @include('layouts.navigation')
         <!-- Page Heading -->
         @if (isset($header))

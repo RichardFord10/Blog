@@ -2,10 +2,9 @@
     <div x-show="tab === 'socials'" x-cloak>
         <!-- Projects Section -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Socials</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 @foreach($socials as $social)
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $social->image) }}"
                         alt="Project Image">
                     <div class="flex flex-col flex-grow p-4 text-center">

@@ -2,10 +2,9 @@
     <div x-show="tab === 'about'" x-cloak>
         <!-- About Section -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">About</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 @foreach($portfolio as $info)
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <div class="inline-block">
                         <div class="text-center">
                             @isset($info->image)

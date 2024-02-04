@@ -1,10 +1,9 @@
 <div>
     <div x-show="tab === 'workHistory'" x-cloak>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Work History</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 @foreach($workHistories as $work)
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}"
                         alt="Work History Image">
                     <div class="flex flex-col flex-grow p-4 text-center">
@@ -16,7 +15,7 @@
                         <div class="flex justify-end px-1 pb-2">
                             <div class="button-group inline flex">
                                 <a href="{{ route('work_history.edit', $work->id) }}"
-                                    class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    class="inline-block bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
                                     <i class="fas fa-pencil-alt"></i> Edit
                                 </a>
                                 &nbsp;

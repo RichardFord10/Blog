@@ -1,13 +1,14 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import  "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import  "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 @import  "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
 @import  "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
 @import '@fortawesome/fontawesome-free/css/all.css';
 @import "~aos/dist/aos.css";
+
 
 
 h1 {
@@ -20,51 +21,21 @@ h3 {
   @apply text-lg;
 }
 
+body {
+  background-color: linear-gradient(to right, #243B55, #141E30)!important;
+}
+
 @layer base {
   ul, ol {
     list-style: revert;
   }
 }
 
-.game-container {
-    text-align: center;
-}
-
-@media (max-width: 768px) { /* Adjust this media query based on your needs */
+@media (max-width: 768px) {
   .table-container {
       max-width: 100% !important;
       overflow-x: auto!important;
   }
-}
-
-#gameArea {
-    width: 475px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.dino {
-    background-image: url('/public/images/game/dino.png'); 
-    background-size: cover;
-    width: 100px; /* Set the width as per your image size */
-    height: 100px; /* Set the height as per your image size */
-    position: absolute;
-    bottom: 5px; /* Adjust as necessary */
-  }
-
-.obstacle {
-    background-image: url('/public/images/game/cloud.png'); 
-    background-size: cover;
-    width: 50px; 
-    height: 50px; 
-    position: absolute;
-    bottom: 0px; 
-    z-index: 10;
-    /* margin-top: 100px; */
-    margin: 0px;
-    padding: 0px;
 }
 
 label:hover .absolute {
@@ -81,12 +52,11 @@ body {
     color: #fff;
 }
   
-/* Code block styles */
 .code-block {
   margin: 1em 0;
   
-  overflow: hidden; /* Ensures the header and the code block stick together */
-  background: #000000; /* This color is for the code block */
+  overflow: hidden; 
+  background: #000000;
   border-radius: 0.5em;
 }
 
@@ -95,9 +65,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0.5em 1em;
-    background: #333; /* Adjust background color as needed */
+    background: #333;
     color: #fff;
-    margin: 0; /* Ensure there are no margins causing a gap */
+    margin: 0; 
 }
 
 .code-language {
@@ -114,14 +84,13 @@ body {
   font-size: 0.85em;
 }
 
-/* Specificity for Prism code styling */
+
 pre[class*="language-"] {
   margin: 0!important;
   border: none!important;
-  background: #000!important; /* If you want the code block to have a black background */
+  background: #000!important;
 }
 
-/* Reset any margins between the header and code block */
 .code-header + pre {
   margin-top: 0;
 }
