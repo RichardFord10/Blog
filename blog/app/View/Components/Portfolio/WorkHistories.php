@@ -22,6 +22,6 @@ class WorkHistories extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.Portfolio.work-histories');
+        return view('components.portfolio.work-histories');
     }
 }

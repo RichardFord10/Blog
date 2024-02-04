@@ -22,6 +22,6 @@ class photo extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.Portfolio.photo');
+        return view('components.portfolio.photo');
     }
 }

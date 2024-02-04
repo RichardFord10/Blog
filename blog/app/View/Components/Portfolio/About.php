@@ -22,6 +22,6 @@ class About extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.Portfolio.about');
+        return view('components.portfolio.about');
     }
 }

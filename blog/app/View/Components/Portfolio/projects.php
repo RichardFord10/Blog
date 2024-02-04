@@ -22,6 +22,6 @@ class Projects extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.Portfolio.projects');
+        return view('components.portfolio.projects');
     }
 }
