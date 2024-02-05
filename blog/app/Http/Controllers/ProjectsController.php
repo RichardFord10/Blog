@@ -15,7 +15,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('projects.form');
+        return view('form');
     }
     
     public function store(Request $request)
@@ -57,8 +57,10 @@ class ProjectsController extends Controller
      */
     public function edit(string $id)
     {
-        $project = Projects::findOrFail($id);
-        return view('projects.form', compact('project'));
+        $entityType = 'projects';
+        $entityName = "Project";
+        $entity = Projects::findOrFail($id);
+        return view('form', compact('entity', 'entityType', 'entityName'));
         
     }
 
