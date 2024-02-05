@@ -13,7 +13,7 @@ class WorkHistoryController extends Controller
      */
     public function create()
     {
-        return view('work_history.form');
+        return view('form');
     }
     
     public function store(Request $request)
@@ -56,8 +56,10 @@ class WorkHistoryController extends Controller
      */
     public function edit(string $id)
     {
-        $work_history = WorkHistory::findOrFail($id);
-        return view('work_history.form', compact('work_history'));
+        $entityName = "Work History";
+        $entityType = 'work_history';
+        $entity = WorkHistory::findOrFail($id);
+        return view('form', compact('entity', 'entityType', 'entityName'));
     }
 
     /**

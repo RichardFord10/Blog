@@ -10,15 +10,20 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function index()
-    {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+    {   
+        $entityType = "posts";
+        $entityName = "post";
+        $entity = Post::orderBy('created_at', 'desc')->get();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('entity', 'entityName', 'entityType'));
     }
 
     public function create()
     {
-        return view('posts.form');
+        $entityType = "posts";
+        $entityName = "post";
+        $entity = null;
+        return view('form', compact('entity', 'entityType', 'entityName'));
     }
 
     public function store(Request $request)
@@ -42,8 +47,10 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
-        return view('posts.form', compact('post'));
+        $entityType = 'posts';
+        $entityName = "Post";
+        $entity = Post::findOrFail($id);
+        return view('form', compact('entity', 'entityType', 'entityName'));
     }
     
     public function update(Request $request, $id)
@@ -72,33 +79,41 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        $post = Post::with('author')->where('slug', $slug)->firstOrFail();
+        $entityType = 'posts';
+        $entityName = "Post";
+        $entity = Post::with('author')->where('slug', $slug)->firstOrFail();
     
-        if (!$post) {
+        if (!$entity) {
             // Handle the case where the post is not found
             return redirect()->route('posts.index')->withErrors('Post not found.');
         }
     
-        return view('posts.post', compact('post'));
+        return view('posts.post', compact('entity', 'entityName', 'entityType'));
     }
 
     public function review(Request $request)
     {
-        $post = (object) $request->session()->get('post_preview');
-        if (!$post) {
-            return redirect()->route('posts.form')->withErrors('No post data found.');
+        $entityType = 'posts';
+        $entityName = "Post";
+        $entity = (object) $request->session()->get('post_preview');
+
+        if (!$entity) {
+            return redirect()->route('form')->withErrors('No post data found.');
         }
 
-        return view('posts.review', compact('post'));
+        return view('posts.review', compact('entity', 'entityType', 'entityName'));
     }
 
     public function confirm(Request $request)
     {
+        $entityType = 'posts';
+        $entityName = "Post";
+
         $data = $request->session()->get('post_preview');
         $request->session()->forget('post_preview');
     
         if (!$data) {
-            return redirect()->route('posts.form')->withErrors('No post data to confirm.');
+            return redirect()->route('form')->withErrors('No post data to confirm.');
         }
     
         // Generate the slug from the title
@@ -106,14 +121,14 @@ class PostController extends Controller
         $slug = Str::slug($slug_text, '-');
     
         // Create the post
-        $post = new Post([
+        $entity = new Post([
             'title' => $data['title'],
             'content' => $data['content'],
             'slug' => $slug,
             'author_id' => Auth::id(),
         ]);
     
-        $post->save();
+        $entity->save();
     
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }

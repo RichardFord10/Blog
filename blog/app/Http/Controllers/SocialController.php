@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class SocialController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function create()
     {
-        return view('socials.form');
+        return view('form');
     }
     
     public function store(Request $request)
@@ -55,8 +56,10 @@ class SocialController extends Controller
      */
     public function edit(string $id)
     {
-        $socials = Socials::findOrFail($id);
-        return view('socials.form', compact('socials'));
+        $entityType = 'socials';
+        $entityName = 'Social';
+        $entity = Socials::findOrFail($id);
+        return view('form', compact('entity','entityType', 'entityName'));
         
     }
 

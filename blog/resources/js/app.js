@@ -36,7 +36,7 @@ AOS.init();
 window.Alpine = Alpine;
 
 tinymce.init({
-    selector: '#content, #about',
+    selector: '#content, #about, #description',
     setup: function (editor) {
         editor.ui.registry.addButton('customcode', {
           text: 'Custom Code',

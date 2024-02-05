@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    @include('partials.messages')
+    <x-messages/>
     <div class="min-h-screen bg-custom-gradient">
         @include('layouts.navigation')
         <!-- Page Heading -->
