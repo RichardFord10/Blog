@@ -10,13 +10,16 @@ class Form extends Component
 {
     public $entity;
     public $entityType;
+    public $entityName;
     /**
      * Create a new component instance.
      */
-    public function __construct($entity, $entityType)
+    public function __construct($entity, $entityType, $entityName)
     {
         $this->entity = $entity;
         $this->entityType = $entityType;
+        $this->entityName = $entityName;
+
     }
     
     /**

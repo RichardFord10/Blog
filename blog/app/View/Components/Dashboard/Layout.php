@@ -8,23 +8,16 @@ use Illuminate\View\Component;
 
 class Layout extends Component
 {
-    public $projects;
-    public $workHistories;
-    public $posts;
-    public $socials;
-    public $portfolio;
+    public $entity;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($projects, $workHistories, $posts, $socials, $portfolio)
+    public function __construct($entity)
     {
-        $this->projects = $projects;
-        $this->workHistories= $workHistories;
-        $this->posts = $posts;
-        $this->socials = $socials;
-        $this->portfolio = $portfolio;
+        $this->entity = $entity;
     }
+    
 
     /**
      * Get the view / contents that represent the component.

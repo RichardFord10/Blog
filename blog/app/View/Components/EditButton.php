@@ -1,28 +1,31 @@
 <?php
 
-namespace App\View\Components\Portfolio;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Layout extends Component
+class EditButton extends Component
 {
     public $entity;
+    public $entityType;
+    public $entityName;
     /**
      * Create a new component instance.
      */
-    public function __construct($entity)
+    public function __construct($entity,$entityType,$entityName)
     {
         $this->entity = $entity;
-    
+        $this->entityType = $entityType;
+        $this->entityName = $entityName;
     }
-
+    
     /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.portfolio.layout');
+        return view('components.edit-button');
     }
 }

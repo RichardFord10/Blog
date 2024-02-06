@@ -3,17 +3,17 @@
         <!-- Profile Section -->
         <div class="text-center max-w-4xl mx-auto p-4">
             <!-- Photo -->
-            <x-portfolio.photo :portfolio="$portfolio"/>
+            <x-portfolio.photo :entity="$entity->portfolio->data"/>
             <!-- About Me -->
-            <x-portfolio.about :portfolio="$portfolio"/>
+            <x-portfolio.about :entity="$entity->portfolio->data"/>
             <!-- Work History -->
-            <x-portfolio.work-histories :work-histories="$workHistories"/>
+            <x-portfolio.work-histories :entity="$entity->workHistories->data"/>
             <!-- Projects -->
-            <x-portfolio.projects :projects="$projects"/>
+            <x-portfolio.projects :entity="$entity->projects->data"/>
             <!-- Socials -->
-            <x-portfolio.socials :socials="$socials"/>
+            <x-portfolio.socials :entity="$entity->socials->data"/>
         </div>
         <!-- Footer -->
-        <x-portfolio.footer :portfolio="$portfolio"/>
+        <x-portfolio.footer :entity="$entity->portfolio->data"/>
     </div>
 </x-app-layout>

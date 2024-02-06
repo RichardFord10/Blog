@@ -10,12 +10,16 @@ use App\Models\Portfolio;
 
 class About extends Component
 {
-    public $portfolio;
+    public $entity;
 
-    public function __construct($portfolio)
+    /**
+     * Create a new component instance.
+     */
+    public function __construct($entity)
     {
-        $this->portfolio = $portfolio;
+        $this->entity = $entity;
     }
+    
 
     public function render()
     {

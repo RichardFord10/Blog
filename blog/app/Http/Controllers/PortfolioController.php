@@ -6,12 +6,19 @@ use App\Models\Portfolio;
 use App\Models\WorkHistory;
 use App\Models\Socials;
 use App\Models\Projects;
+use App\Models\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PortfolioController extends Controller
 {
+    public $projects;
+    public $workHistories;
+    public $socials;
+    public $portfolio;
+    public $entity;
+
     public function store(Request $request)
     {
         $validated_data = $request->validate([
@@ -33,12 +40,10 @@ class PortfolioController extends Controller
 
     public function index()
     {
-        $work_histories = WorkHistory::all();
-        $projects = Projects::all();
-        $socials = Socials::all();
-        $portfolio = Portfolio::where('active', true)->orderBy('updated_at', 'asc')->first();
+
+        $entity = $this->getEntity();
         
-        return view('portfolio.index', compact('work_histories', 'projects', 'socials', 'portfolio'));
+        return view('portfolio.index', compact('entity'));
     }
 
     public function create()
@@ -49,8 +54,11 @@ class PortfolioController extends Controller
 
     public function edit(string $id)
     {
-        $portfolio = Portfolio::findOrFail($id);
-        return view('portfolio.edit', compact('portfolio'));
+        $entity = Portfolio::findOrFail($id);
+        $entityType = 'portfolio';
+        $entityName = 'Portfolio';
+
+        return view('portfolio.edit', compact('entity', 'entityType', 'entityName'));
         
     }
 
@@ -87,6 +95,31 @@ class PortfolioController extends Controller
         $about->delete();
 
         return redirect()->route('dashboard.index')->with('success', 'Social deleted successfully');
+    }
+
+    public function getEntity()
+    {
+        //TODO Get only Active
+        $workHistories = WorkHistory::all();
+        $projects = Projects::all();
+        $socials = Socials::all();
+        $portfolio = Portfolio::all();
+        $posts = Post::all();
+
+        $this->entity = new \stdClass();
+        $this->projects = $projects;
+        $this->workHistories= $workHistories;
+        $this->socials = $socials;
+        $this->portfolio = $portfolio;
+        $this->entity->projects = (object) ['data' => $projects, 'type' => 'projects', 'name' => 'projects'];
+        $this->entity->workHistories = (object) ['data' => $workHistories, 'type' => 'workHistories', 'name' => 'Work History'];
+        $this->entity->socials = (object) ['data' => $socials, 'type' => 'socials', 'name' => 'Socials'];
+        $this->entity->portfolio = (object) ['data' => $portfolio, 'type' => 'portfolio', 'name' => 'Portfolio'];
+        $this->entity->posts = (object) ['data' => $posts, 'type' => 'posts', 'name' => 'Blog'];
+
+        $entity = $this->entity;
+
+        return $entity;
     }
     
 }   
