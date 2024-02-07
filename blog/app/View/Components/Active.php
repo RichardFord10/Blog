@@ -10,17 +10,14 @@ class Active extends Component
 {
 
     public $entity;
-    public $entityType;
-    public $entityName;
+
 
     /**
      * Create a new component instance.
      */
-    public function __construct($entity, $entityType, $entityName)
+    public function __construct($entity)
     {
         $this->entity = $entity;
-        $this->entityType = $entityType;
-        $this->entityName = $entityName;
     }
 
     /**
