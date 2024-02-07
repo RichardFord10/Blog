@@ -8,13 +8,16 @@ use Illuminate\View\Component;
 
 class Title extends Component
 {
+    public $entity;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($entity)
     {
-        //
+        $this->entity = $entity;
     }
+    
 
     /**
      * Get the view / contents that represent the component.

@@ -12,14 +12,14 @@
         <!-- Tab Content -->
         <div class="container mx-auto py-4">
             <!-- About -->
-            <x-dashboard.about :portfolio="$portfolio"/>
+            <x-dashboard.about :entity="$entity->portfolio->data"/>
             <!-- Blogs -->
-            <x-dashboard.blogs :posts="$posts"/>
+            <x-dashboard.blogs :entity="$entity->posts->data"/>
             <!-- Work History -->
-            <x-dashboard.work-history :work-histories="$workHistories"/>
+            <x-dashboard.work-history :entity="$entity->workHistories->data"/>
             <!-- Projects -->
-            <x-dashboard.projects :projects="$projects"/>
+            <x-dashboard.projects :entity="$entity->projects->data"/>
             <!-- Socials -->
-            <x-dashboard.socials :socials="$socials"/>
+            <x-dashboard.socials :entity="$entity->socials->data"/>
         </div>
 </x-app-layout>

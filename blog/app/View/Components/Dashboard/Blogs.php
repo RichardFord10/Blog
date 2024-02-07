@@ -8,14 +8,16 @@ use Illuminate\View\Component;
 
 class Blogs extends Component
 {
-    public $posts;
+    public $entity;
+
     /**
      * Create a new component instance.
      */
-    public function __construct($posts)
+    public function __construct($entity)
     {
-        $this->posts = $posts;
+        $this->entity = $entity;
     }
+    
 
     /**
      * Get the view / contents that represent the component.

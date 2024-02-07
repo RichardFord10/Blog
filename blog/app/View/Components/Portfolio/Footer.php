@@ -8,13 +8,14 @@ use Illuminate\View\Component;
 
 class Footer extends Component
 {
-    public $portfolio;
+    public $entity;
     /**
      * Create a new component instance.
      */
-    public function __construct($portfolio)
+    public function __construct($entity)
     {
-        $this->portfolio = $portfolio;
+        $this->entity = $entity;
+
     }
 
     /**

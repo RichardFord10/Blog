@@ -8,15 +8,16 @@ use Illuminate\View\Component;
 
 class Socials extends Component
 {
-    public $socials;
+    public $entity;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($socials)
+    public function __construct($entity)
     {
-        $this->socials = $socials;
+        $this->entity = $entity;
     }
+    
 
     /**
      * Get the view / contents that represent the component.

@@ -8,14 +8,16 @@ use Illuminate\View\Component;
 
 class Projects extends Component
 {
-    public $projects;
+    public $entity;
+
     /**
      * Create a new component instance.
      */
-    public function __construct($projects)
+    public function __construct($entity)
     {
-        $this->projects = $projects;
+        $this->entity = $entity;
     }
+    
 
     /**
      * Get the view / contents that represent the component.

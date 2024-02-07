@@ -6,15 +6,16 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class photo extends Component
+class Photo extends Component
 {
-    public $portfolio;
+    public $entity;
     /**
      * Create a new component instance.
      */
-    public function __construct($portfolio)
+    public function __construct($entity)
     {
-        $this->portfolio = $portfolio;
+        $this->entity = $entity->first()->image ?? null;
+
     }
 
     /**

@@ -8,15 +8,20 @@ use Illuminate\View\Component;
 
 class About extends Component
 {
-    public $portfolio;
+    public $entity;
+
     /**
      * Create a new component instance.
      */
-    public function __construct($portfolio)
+    public function __construct($entity)
     {
-        $this->portfolio = $portfolio;
-    }
+        $this->entity = new \stdClass();
+        $this->entity->first_name = $entity->first()->first_name ?? null;
+        $this->entity->last_name = $entity->first()->last_name ?? null;
+        $this->entity->description = $entity->first()->description ?? null;
 
+    }
+    
     /**
      * Get the view / contents that represent the component.
      */

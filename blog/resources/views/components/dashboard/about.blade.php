@@ -3,7 +3,7 @@
         <!-- About Section -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
-                @foreach($portfolio as $info)
+                @foreach($entity as $info)
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <div class="inline-block">
                         <div class="text-center">
@@ -25,13 +25,12 @@
                                 </h3>
                             </div>
                         </div>
-
                     </div>
                     <div class="flex flex-col flex-grow p-4 text-center">
                         <p class="text-sm text-gray-600 dark:text-gray-300 flex-grow">
-                            {{ $info->about }}</p>
-                        <div class="flex justify-end px-1 pb-2">
-                            <div class="button-group inline flex">
+                            {{ $info->description }}</p>
+                        <div class="flex justify-center px-1 pb-2">
+                            <div class="button-group inline-flex text-center">
                                 <a href="{{ route('portfolio.edit', $info->id) }}"
                                     class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     <i class="fas fa-pencil-alt"></i> Edit
@@ -49,10 +48,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="border-t border-gray-200 dark:border-gray-600 px-4 py-2">
-                        <p class="text-xs text-gray-500 dark:text-gray-400 text-right">
-                            {{ $info->created_at }}
-                        </p>
+                    <div class="border-t border-gray-200 dark:border-gray-600 px-4 py-4 inline-flex justify-end ">
+                    <sup>{{ \Carbon\Carbon::parse($info->created_at)->format('F j, Y, g:i A') }}</sup>
                     </div>
                 </div>
                 @endforeach
