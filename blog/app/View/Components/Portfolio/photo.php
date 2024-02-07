@@ -14,7 +14,8 @@ class Photo extends Component
      */
     public function __construct($entity)
     {
-        $this->entity = $entity;
+        $this->entity = $entity->first()->image ?? null;
+
     }
 
     /**

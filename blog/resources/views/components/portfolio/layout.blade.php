@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="container-fluid mx-auto py-6">
         <!-- Profile Section -->
         <div class="text-center max-w-4xl mx-auto p-4">

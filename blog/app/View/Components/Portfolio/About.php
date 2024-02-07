@@ -15,7 +15,11 @@ class About extends Component
      */
     public function __construct($entity)
     {
-        $this->entity = $entity;
+        $this->entity = new \stdClass();
+        $this->entity->first_name = $entity->first()->first_name ?? null;
+        $this->entity->last_name = $entity->first()->last_name ?? null;
+        $this->entity->description = $entity->first()->description ?? null;
+
     }
     
     /**
