@@ -1,10 +1,10 @@
 <div>
     <div class="container mx-auto py-5">
         <x-dashboard.return/>
-        {{$entityType.'.update'}}
         <div class="max-w-lg mx-auto mt-2">
             <!-- Heading -->
             <x-heading :entity="$entity"/>
+            <!-- Form -->
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
                 <form method="POST" enctype="multipart/form-data"
                     action="{{ isset($entityType) ? route($entityType.'.update', $entity->id) : route($entityType.'.store') }}">

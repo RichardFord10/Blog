@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
 
 
 //Non Auth Routes
+Route::get('/imdb', function () {return view('imdb.index');});
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send');
 Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index');

@@ -12,7 +12,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
 
-    <!-- Scripts -->
+    <!-- Scripts/Styles -->
+    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
 </head>
@@ -35,6 +36,6 @@
             {{ $slot }}
         </main>
     </div>
+    @livewireScripts
 </body>
-
 </html>
