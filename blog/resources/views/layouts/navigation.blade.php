@@ -1,10 +1,9 @@
 @if(Auth::check())
-<nav x-data="{ open: false }"
-    class="nav-container bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
+<nav x-data="{ open: false }" class="nav-container bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-9xl mx-auto px-3 sm:px-6 lg:px-8">
         <div class="flex justify-between h-14 items-center">
-            <div class="flex">
+            <div class="flex justify-start">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
@@ -55,7 +54,10 @@
                                 class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 Product Filter
                             </a>
-                            <!-- Additional feature links can be added here -->
+                            <a href="{{ route('imdb') }}"
+                                class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                                Data Table
+                            </a>
                             <a href="{{ route('upload') }}"
                                 class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 CSV Tool
@@ -133,6 +135,10 @@
 
             <x-responsive-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')">
                 {{ __('ChatGPT Clone') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('imdb')" :active="request()->routeIs('imdb')">
+                {{ __('Data Table') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
@@ -225,6 +231,10 @@
                                 {{ __('ChatGPT Clone') }}
                             </x-responsive-nav-link>
 
+                            <x-responsive-nav-link :href="route('imdb')" :active="request()->routeIs('imdb')">
+                                {{ __('Data Table') }}
+                            </x-responsive-nav-link>
+
                             <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
                                 {{ __('CSV Tool') }}
                             </x-responsive-nav-link>
@@ -274,6 +284,10 @@
                 {{ __('ChatGPT Clone') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link :href="route('imdb')" :active="request()->routeIs('imdb')">
+                {{ __('Data Table') }}
+            </x-responsive-nav-link>
+            
             <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
                 {{ __('CSV Tool') }}
             </x-responsive-nav-link>
@@ -294,7 +308,6 @@
                         {{ __('Register') }}
                     </x-responsive-nav-link>
                     @endif
-
                 </div>
             </div>
         </div>

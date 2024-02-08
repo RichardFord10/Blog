@@ -12,15 +12,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
 
-    <!-- Scripts -->
+    <!-- Scripts/Styles -->
+    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
 </head>
 
+@include('layouts.navigation')
 <body class="font-sans antialiased">
     <x-messages/>
     <div class="min-h-screen bg-custom-gradient">
-        @include('layouts.navigation')
         <!-- Page Heading -->
         @if (isset($header))
         <header class="bg-white dark:bg-gray-800 shadow">
@@ -35,6 +36,6 @@
             {{ $slot }}
         </main>
     </div>
+    @livewireScripts
 </body>
-
 </html>

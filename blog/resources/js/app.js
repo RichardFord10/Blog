@@ -158,119 +158,6 @@ window.chat = () => {
     };
 };
 
-window.dinoGame = () => {
-    return {
-        score: 0,
-        gameInterval: null,
-        jumpInterval: null,
-        isJumping: false,
-        dinoElement: null,
-        obstacleElement: null,
-
-        init() {
-            this.dinoElement = this.$refs.dino;
-            this.obstacleElement = this.$refs.obstacle;
-            document.addEventListener('keydown', (e) => {
-                if (e.code === 'Space') {
-                    this.jump();
-                }
-            });
-        },
-
-        startGame() {
-            this.resetGame();
-            this.gameInterval = setInterval(() => {
-                this.score++;
-                this.moveObstacle();
-                this.checkCollision();
-            }, 50);
-        },
-
-        resetGame() {
-            this.score = 0;
-            this.obstacleElement.style.right = '499px'; // Reset obstacle position
-        },
-
-        moveObstacle() {
-            let currentRight = parseInt(this.obstacleElement.style.right, 10);
-            currentRight += 6; // Fixed obstacle speed
-            this.obstacleElement.style.right = `${currentRight}px`;
-
-
-            const gameAreaWidth = parseInt(window.getComputedStyle(this.dinoElement.parentElement).width, 10);
-            if (currentRight >= gameAreaWidth) {
-                this.generateObstacle();
-            }
-        },
-
-        generateObstacle() {
-            const minHeight = 1;
-            const maxHeight = 3;
-            const randomHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
-
-            this.obstacleElement.style.right = '100%';
-            this.obstacleElement.style.bottom = `${randomHeight}px`;
-        },
-
-
-        jump() {
-            if (this.isJumping) return;
-            this.isJumping = true;
-            let jumpHeight = 0;
-            const jumpPeak = 80; // Adjust for jump height
-
-            this.jumpInterval = setInterval(() => {
-                if (jumpHeight < jumpPeak) {
-                    jumpHeight += 5; // Adjust for jump speed
-                    this.dinoElement.style.bottom = `${jumpHeight}px`;
-                } else {
-                    clearInterval(this.jumpInterval);
-                    this.fallDown();
-                }
-            }, 20);
-        },
-
-        fallDown() {
-            let jumpHeight = parseInt(window.getComputedStyle(this.dinoElement).bottom, 10);
-
-            const fallInterval = setInterval(() => {
-                if (jumpHeight > 0) {
-                    jumpHeight -= 3; // Adjust for fall speed
-                    this.dinoElement.style.bottom = `${jumpHeight}px`;
-                } else {
-                    clearInterval(fallInterval);
-                    this.isJumping = false;
-                }
-            }, 20);
-        },
-
-        checkCollision() {
-            const dinoRect = this.dinoElement.getBoundingClientRect();
-            const obstacleRect = this.obstacleElement.getBoundingClientRect();
-
-            // Adjust for any transparent or non-collision areas
-            const dinoCollisionOffset = { right: 20, bottom: 20 }; // Adjust these values as needed
-            const obstacleCollisionOffset = { left: 20, top: 20 }; // Adjust these values as needed
-
-            // Check for overlap considering offsets
-            const isCollision = (dinoRect.right - dinoCollisionOffset.right) > (obstacleRect.left + obstacleCollisionOffset.left) &&
-                (dinoRect.bottom - dinoCollisionOffset.bottom) > (obstacleRect.top + obstacleCollisionOffset.top) &&
-                dinoRect.left < obstacleRect.right &&
-                dinoRect.top < obstacleRect.bottom;
-
-            if (isCollision) {
-                console.log('Collision Detected');
-                clearInterval(this.gameInterval);
-                this.resetGame();
-                alert('Game Over');
-                location.reload();
-                // this.startGame(); // Reset game or other game over logic
-            }
-        }
-
-    };
-}
-
 
 function checkFile() {
     var fileInput = document.getElementById('csv_file');
@@ -293,7 +180,7 @@ if (document.getElementById('download')) {
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('createCsv', () => ({
+    window.createCsv = () => ({
         showUploadForm: true,
         showTableForm: false,
         rows: 0,
@@ -429,11 +316,7 @@ document.addEventListener('alpine:init', () => {
 
 
 
-    }));
-
-    // setInterval(() => {checkCsvData, 2000});
-
-
+    });
 });
 
 

@@ -10,6 +10,8 @@ use App\Models\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class PortfolioController extends Controller
 {
@@ -22,7 +24,7 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $validated_data = $request->validate([
-            'about' => 'required|max:5000',
+            'description' => 'required|max:5000',
             'active' => 'sometimes',
             'image' => 'nullable|image',
             'first_name' => 'required|max:255',
@@ -33,9 +35,9 @@ class PortfolioController extends Controller
     
         $validated_data['author_id'] = Auth::id();
     
-        $about = Portfolio::create($validated_data);
+        $portfolio = Portfolio::create($validated_data);
     
-        return redirect()->route('dashboard.index')->with('success', 'About info added successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Portfolio info added successfully.');
     }
 
     public function index()
@@ -65,8 +67,9 @@ class PortfolioController extends Controller
 
     public function update(Request $request, string $id)
     {
+
         $validated_data = $request->validate([
-            'about' => 'required|max:5000',
+            'description' => 'required|max:5000',
             'active' => 'sometimes',
             'image' => 'nullable|image',
             'first_name' => 'required|max:255',
@@ -77,12 +80,12 @@ class PortfolioController extends Controller
             $validated_data['image'] = $request->file('image')->store('images/portfolio', 'public');
         }
         
-        $validated_data['active'] = $request->has('active');
+        $validated_data['active'] = $request->input('active') == '1';
     
         $portfolio = Portfolio::findOrFail($id);
         $portfolio->update($validated_data);
     
-        return redirect()->route('dashboard.index')->with('success', 'About updated successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Portfolio updated successfully.');
     }
     
     
@@ -90,9 +93,9 @@ class PortfolioController extends Controller
 
     public function destroy(string $id)
     {
-        $about = Portfolio::findOrFail($id);
+        $portfolio = Portfolio::findOrFail($id);
 
-        $about->delete();
+        $portfolio->delete();
 
         return redirect()->route('dashboard.index')->with('success', 'Social deleted successfully');
     }

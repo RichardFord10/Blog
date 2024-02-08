@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Portfolio extends Model
+class Imdb extends Model
 {
     use HasFactory;
-    protected $fillable = ['active', 'description', 'image', 'author_id', 'first_name', 'last_name'];
-
 }

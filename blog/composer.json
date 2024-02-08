@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "league/csv": "^9.14",
+        "livewire/livewire": "^3.4",
         "tinymce/tinymce": "^6.8"
     },
     "require-dev": {
