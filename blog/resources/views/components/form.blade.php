@@ -7,7 +7,7 @@
             <!-- Form -->
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
                 <form method="POST" enctype="multipart/form-data"
-                    action="{{ isset($entityType) ? route($entityType.'.update', $entity->id) : route($entityType.'.store') }}">
+                    action="{{ isset($entity) ? route($entityType.'.update', $entity->id) : route($entityType.'.store') }}">
                     @csrf
                     @if(isset($entity))
                     @method('PUT')
