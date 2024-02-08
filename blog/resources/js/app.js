@@ -180,7 +180,7 @@ if (document.getElementById('download')) {
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('createCsv', () => ({
+    window.createCsv = () => ({
         showUploadForm: true,
         showTableForm: false,
         rows: 0,
@@ -316,11 +316,7 @@ document.addEventListener('alpine:init', () => {
 
 
 
-    }));
-
-    // setInterval(() => {checkCsvData, 2000});
-
-
+    });
 });
 
 

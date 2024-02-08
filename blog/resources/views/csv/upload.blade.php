@@ -56,7 +56,7 @@
                         <template x-for="rowIndex in parseInt(rows)">
                             <tr>
                                 <template x-for="colIndex in parseInt(columns)">
-                                    <td class=" text-white border px-4 py-2" contenteditable="true"
+                                    <td class=" text-black border px-4 py-2" contenteditable="true"
                                         x-text="table[rowIndex-1]?.[colIndex-1] || ''"></td>
                                 </template>
                             </tr>
@@ -78,7 +78,7 @@
                         <tr>
                             @if(!empty($headers))
                             @foreach($headers as $header)
-                            <th class="px-4 py-2">{{$header}}</th>
+                            <th class="px-4 py-2 text-black">{{$header}}</th>
                             @endforeach
                             @endif
 
@@ -88,7 +88,7 @@
                         @foreach($data as $row)
                         <tr>
                             @foreach($row as $cell)
-                            <td x-on:input="adjustTable()" class="text-black border px-4 py-2" contenteditable='true'>
+                            <td x-on:input="adjustTable()" class="text-white border px-4 py-2" contenteditable='true'>
                                 {{ $cell }}</td>
                             @endforeach
                         </tr>
