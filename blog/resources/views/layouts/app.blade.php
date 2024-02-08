@@ -18,10 +18,10 @@
     
 </head>
 
+@include('layouts.navigation')
 <body class="font-sans antialiased">
     <x-messages/>
     <div class="min-h-screen bg-custom-gradient">
-        @include('layouts.navigation')
         <!-- Page Heading -->
         @if (isset($header))
         <header class="bg-white dark:bg-gray-800 shadow">

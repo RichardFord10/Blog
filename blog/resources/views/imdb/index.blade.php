@@ -1,3 +1,3 @@
 <x-app-layout>
-        @livewire('imdb-table')
+@livewire('imdb-table')
 </x-app-layout>

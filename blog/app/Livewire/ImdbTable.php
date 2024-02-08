@@ -3,27 +3,38 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\Imdb; 
 use Illuminate\Support\Facades\Log;
 
 class ImdbTable extends Component
 {
+    use WithPagination; // Use the trait here
+
     public $sortBy = 'rank';
     public $sortDirection = 'asc';
+    public $search = '';
     protected $paginationTheme = 'tailwind';
 
-
-    public function mount()
+    public function updateSearch($search)
     {
-        // Log that the mount method was called
-        Log::debug('ImdbTable mount method called.');
-
-        // You can add any additional setup code here
+        $this->search = $search;
+        $this->resetPage();
     }
 
     public function render()
     {
-        $imdb = Imdb::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
+        $searchTerm = '%'.$this->search.'%';
+        $imdb = Imdb::query()
+        ->where(function ($query) {
+            $searchTerm = '%'.$this->search.'%';
+            $query->where('title', 'like', $searchTerm)
+                  ->orWhere('genre', 'like', $searchTerm)
+                  ->orWhere('year', 'like', $this->search);
+        })
+        ->orderBy($this->sortBy, $this->sortDirection)
+        ->paginate(10);
+        Log::debug($imdb);
         return view('livewire.imdb-table', compact('imdb'));
     }
 
