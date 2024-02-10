@@ -36,6 +36,6 @@
         </table>
     </div>
     <div class="mt-4">
-        {{ $imdb->links('vendor.pagination.tailwind') }}
+        {{ $imdb->links() }}
     </div>
 </div>

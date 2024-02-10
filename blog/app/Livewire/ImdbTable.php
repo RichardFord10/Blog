@@ -5,21 +5,21 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Imdb; 
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
 
 class ImdbTable extends Component
 {
-    use WithPagination; // Use the trait here
+    use WithPagination; 
 
     public $sortBy = 'rank';
     public $sortDirection = 'asc';
     public $search = '';
-    protected $paginationTheme = 'tailwind';
+    public $paginationTheme = 'tailwind';
 
     public function updateSearch($search)
     {
         $this->search = $search;
-        $this->resetPage();
+
     }
 
     public function render()
@@ -34,13 +34,11 @@ class ImdbTable extends Component
         })
         ->orderBy($this->sortBy, $this->sortDirection)
         ->paginate(10);
-        Log::debug($imdb);
         return view('livewire.imdb-table', compact('imdb'));
     }
 
     public function changeSort($field)
     {
-        Log::debug("Sorting by field: {$field}");
     
         if ($this->sortDirection == 'asc' && $this->sortBy == $field) {
             $this->sortDirection = 'desc';
