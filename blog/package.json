@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.5.1",
+        "@tailwindcss/typography": "^0.5.10",
         "aos": "^2.3.4",
         "livewire": "^0.6.1",
         "prismjs": "^1.29.0",
