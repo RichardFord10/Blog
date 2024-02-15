@@ -58,6 +58,10 @@
                                 class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 Data Table
                             </a>
+                            <a href="{{ route('finance-tracker') }}"
+                                class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                                Finance Tracker
+                            </a>
                             <a href="{{ route('upload') }}"
                                 class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                                 CSV Tool
@@ -139,6 +143,10 @@
 
             <x-responsive-nav-link :href="route('imdb')" :active="request()->routeIs('imdb')">
                 {{ __('Data Table') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('finance-tracker')" :active="request()->routeIs('finance-tracker')">
+                {{ __('Finance Tracker') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
@@ -235,6 +243,10 @@
                                 {{ __('Data Table') }}
                             </x-responsive-nav-link>
 
+                            <x-responsive-nav-link :href="route('finance-tracker')" :active="request()->routeIs('finance-tracker')">
+                                {{ __('Finance Tracker') }}
+                            </x-responsive-nav-link>
+
                             <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
                                 {{ __('CSV Tool') }}
                             </x-responsive-nav-link>
@@ -288,6 +300,10 @@
                 {{ __('Data Table') }}
             </x-responsive-nav-link>
             
+            <x-responsive-nav-link :href="route('finance-tracker')" :active="request()->routeIs('finance-tracker')">
+                {{ __('Finance Tracker') }}
+            </x-responsive-nav-link>
+
             <x-responsive-nav-link :href="route('upload')" :active="request()->routeIs('upload')">
                 {{ __('CSV Tool') }}
             </x-responsive-nav-link>
