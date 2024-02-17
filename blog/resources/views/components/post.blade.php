@@ -1,9 +1,9 @@
 <div>
     <div class="container mx-auto p-4 max-w-4xl"> 
+        <a href="{{ route('posts.index') }}" class="inline-flex items-center">
+            <i class="fa fa-chevron-left bold" aria-hidden="true"></i>
+        </a>
         <div class="flex justify-between items-center">
-            <a href="{{ route('posts.index') }}" class="inline-flex items-center">
-                <i class="fa fa-chevron-left bold" aria-hidden="true"></i>
-            </a>
             <div class="py-4 text-center w-full"> 
                 {!! $entity->title !!}
             </div>

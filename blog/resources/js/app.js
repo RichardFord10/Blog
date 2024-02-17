@@ -15,10 +15,6 @@ import 'tinymce/plugins/table';
 import 'tinymce/plugins/charmap';
 import 'tinymce/plugins/media';
 import '@fortawesome/fontawesome-free/js/all';
-
-
-
-
 import Prism from 'prismjs';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-javascript';
@@ -31,8 +27,12 @@ import "prismjs/themes/prism-twilight.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-AOS.init();
 
+window.addEventListener('load', () => {
+    AOS.init();
+    AOS.refresh();
+
+});
 window.Alpine = Alpine;
 
 tinymce.init({
