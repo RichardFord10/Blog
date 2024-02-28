@@ -57,7 +57,5 @@ Route::get('/csv-upload', [CsvController::class, 'index'])->name('csv');
 Route::post('/csv-upload', [CsvController::class, 'upload'])->name('upload');
 Route::get('/csv-download', [CsvController::class, 'download'])->name('download');
 
-Route::middleware(['auth'])->group(function () {
-});
 
 require __DIR__.'/auth.php';
