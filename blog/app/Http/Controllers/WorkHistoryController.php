@@ -13,7 +13,11 @@ class WorkHistoryController extends Controller
      */
     public function create()
     {
-        return view('form');
+        $entityType = 'work_history'; 
+        $entityName = 'Work History'; 
+    
+        return view('form', compact('entityType', 'entityName'));
+        
     }
     
     public function store(Request $request)

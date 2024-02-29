@@ -15,7 +15,10 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('form');
+        $entityType = 'projects'; 
+        $entityName = 'Project'; 
+    
+        return view('form', compact('entityType', 'entityName'));
     }
     
     public function store(Request $request)

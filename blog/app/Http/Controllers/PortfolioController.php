@@ -50,7 +50,11 @@ class PortfolioController extends Controller
 
     public function create()
     {
-        return view('portfolio.create');
+
+        $entityType = 'portfolio'; 
+        $entityName = 'Portfolio'; 
+    
+        return view('form', compact('entityType', 'entityName'));
     }
 
 

@@ -14,7 +14,11 @@ class SocialController extends Controller
      */
     public function create()
     {
-        return view('form');
+        $entity = 'social';
+        $entityType = 'socials'; 
+        $entityName = 'Social'; 
+    
+        return view('form', compact('entityType', 'entityName'));
     }
     
     public function store(Request $request)

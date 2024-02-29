@@ -14,13 +14,14 @@ class Form extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($entity, $entityType, $entityName)
+    public function __construct($entity = null, $entityType = null, $entityName = null)
     {
         $this->entity = $entity;
         $this->entityType = $entityType;
         $this->entityName = $entityName;
-
+        
     }
+
     
     /**
      * Get the view / contents that represent the component.
