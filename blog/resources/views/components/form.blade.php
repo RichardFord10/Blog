@@ -13,7 +13,7 @@
                             {{ route($entityType.'.store') }}
                         @endif">
                     @csrf
-                    @if(isset($entity))
+                    @if($entity != 'new')
                     @method('PUT')
                     @endif
                     <!-- Title -->
