@@ -9,7 +9,7 @@
             {{$entity->last_name}}
             @endisset
         </h3>
-        <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
+        <p class="text-gray-600 dark:text-gray-300 text-xl md:text-base ">
             @isset($entity->description)
             {!!$entity->description!!}
             @endisset

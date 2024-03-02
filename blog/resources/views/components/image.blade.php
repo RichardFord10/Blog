@@ -7,5 +7,5 @@
     <input type="file" name="image" id="image"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-800 leading-tight focus:outline-none focus:shadow-outline">
 
-    <sup class="text-xs text-gray-600">Leave blank if you don't want to change the image.</sup>
+    <sup class="text-xs text-white-600">Leave blank if you don't want to change the image.</sup>
 </div>

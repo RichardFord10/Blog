@@ -8,7 +8,7 @@
             <!-- Use flex to create a column layout and make it full height -->
             <a href="{{ route('work-history.show', $work->id) }}">
             <div data-aos="fade-up" data-aos-anchor-placement="top-center" class="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-6 p-6 transition-shadow duration-300 hover:shadow-xl">
-                <img class="h-40 w-full object-cover rounded-t-lg mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}" alt="Work Image">
+                <img class="h-45 w-full object-cover rounded-t-lg mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}" alt="Work Image">
                 <div class="flex-1"> <!-- flex-1 will make the inner div grow and fill available space -->
                     <h4 class="font-bold text-lg dark:text-white mt-4">
                         {{ $work->title }}

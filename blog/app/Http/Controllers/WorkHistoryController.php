@@ -13,10 +13,11 @@ class WorkHistoryController extends Controller
      */
     public function create()
     {
+        $entity = 'new';
         $entityType = 'work_history'; 
         $entityName = 'Work History'; 
     
-        return view('form', compact('entityType', 'entityName'));
+        return view('form', compact('entity', 'entityType', 'entityName'));
         
     }
     
@@ -52,6 +53,7 @@ class WorkHistoryController extends Controller
      */
     public function show($id)
     {
+
         $entityType = 'work_history';
         $entityName = "Work History";
         $entity = WorkHistory::where('id', $id)->firstOrFail();
