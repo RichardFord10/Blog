@@ -50,9 +50,13 @@ class WorkHistoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $entityType = 'work_history';
+        $entityName = "Work History";
+        $entity = WorkHistory::where('id', $id)->firstOrFail();
+    
+        return view('portfolio.work_history.view', compact('entity', 'entityName', 'entityType'));
     }
 
     /**

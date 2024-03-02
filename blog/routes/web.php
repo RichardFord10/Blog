@@ -53,6 +53,7 @@ Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index');
 Route::get('/products/filter', [ProductController::class, 'filter']);
 Route::resource('products', ProductController::class);
 Route::resource('posts', PostController::class);
+Route::get('/work-history/{id}', [WorkHistoryController::class, 'show'])->name('work-history.show');
 Route::get('/csv-upload', [CsvController::class, 'index'])->name('csv');
 Route::post('/csv-upload', [CsvController::class, 'upload'])->name('upload');
 Route::get('/csv-download', [CsvController::class, 'download'])->name('download');
