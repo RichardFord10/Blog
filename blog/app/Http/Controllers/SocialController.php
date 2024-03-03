@@ -38,7 +38,7 @@ class SocialController extends Controller
 
         $socials = Socials::create($validated_data);
 
-        return redirect()->route('dashboard.index')->with('success', 'Project added successfully.');
+        return redirect()->route('dashboard.index')->with('success', 'Social added successfully.');
     }
     
     public function index()
@@ -64,7 +64,6 @@ class SocialController extends Controller
         $entityName = 'Social';
         $entity = Socials::findOrFail($id);
         return view('form', compact('entity','entityType', 'entityName'));
-        
     }
 
     /**
