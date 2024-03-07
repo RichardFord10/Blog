@@ -109,3 +109,10 @@ pre[class*="language-"] {
   margin-top: 0;
 }
 
+a:hover {
+  text-decoration: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}
