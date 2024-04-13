@@ -29,13 +29,13 @@ class PortfolioController extends Controller
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
         ]);
-    
+
         $validated_data['active'] = $request->has('active');
-    
+
         $validated_data['author_id'] = Auth::id();
-    
+
         $portfolio = Portfolio::create($validated_data);
-    
+
         return redirect()->route('dashboard.index')->with('success', 'Portfolio info added successfully.');
     }
 
@@ -43,16 +43,16 @@ class PortfolioController extends Controller
     {
 
         $entity = $this->getEntity();
-        
+
         return view('portfolio.index', compact('entity'));
     }
 
     public function create()
     {
+        $entity = "new";
+        $entityType = 'portfolio';
+        $entityName = 'Portfolio';
 
-        $entityType = 'portfolio'; 
-        $entityName = 'Portfolio'; 
-    
         return view('form', compact('entityType', 'entityName'));
     }
 
@@ -64,7 +64,6 @@ class PortfolioController extends Controller
         $entityName = 'Portfolio';
 
         return view('portfolio.edit', compact('entity', 'entityType', 'entityName'));
-        
     }
 
 
@@ -78,20 +77,20 @@ class PortfolioController extends Controller
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
         ]);
-        
+
         if ($request->hasFile('image')) {
             $validated_data['image'] = $request->file('image')->store('images/portfolio', 'public');
         }
-        
+
         $validated_data['active'] = $request->input('active') == '1';
-    
+
         $portfolio = Portfolio::findOrFail($id);
         $portfolio->update($validated_data);
-    
+
         return redirect()->route('dashboard.index')->with('success', 'Portfolio updated successfully.');
     }
-    
-    
+
+
 
 
     public function destroy(string $id)
@@ -114,7 +113,7 @@ class PortfolioController extends Controller
 
         $this->entity = new \stdClass();
         $this->projects = $projects;
-        $this->workHistories= $workHistories;
+        $this->workHistories = $workHistories;
         $this->socials = $socials;
         $this->portfolio = $portfolio;
         $this->entity->projects = (object) ['data' => $projects, 'type' => 'projects', 'name' => 'projects'];
@@ -127,5 +126,4 @@ class PortfolioController extends Controller
 
         return $entity;
     }
-    
-}   
+}

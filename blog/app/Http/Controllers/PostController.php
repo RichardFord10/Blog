@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function index()
-    {   
+    {
         $entityType = "posts";
         $entityName = "post";
         $entity = Post::orderBy('created_at', 'desc')->get();
@@ -22,7 +22,7 @@ class PostController extends Controller
     {
         $entityType = "posts";
         $entityName = "post";
-        $entity = null;
+        $entity = "new";
         return view('form', compact('entity', 'entityType', 'entityName'));
     }
 
@@ -32,7 +32,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
         ]);
-        
+
         if (Auth::id() != config('permissions.super_user_id')) {
             return redirect()->route('dashboard.index')->withErrors('You are not authorized to create posts.');
         }
@@ -41,7 +41,7 @@ class PostController extends Controller
         return redirect()->route('posts.review');
 
         // $post->save();
-    
+
         // return redirect()->route('posts.index')->with('success','Post created successfully.');
     }
 
@@ -52,7 +52,7 @@ class PostController extends Controller
         $entity = Post::findOrFail($id);
         return view('form', compact('entity', 'entityType', 'entityName'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -61,7 +61,7 @@ class PostController extends Controller
         ]);
 
         $post = Post::findOrFail($id);
-        
+
         $post->update($request->all());
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');
@@ -82,12 +82,12 @@ class PostController extends Controller
         $entityType = 'posts';
         $entityName = "Post";
         $entity = Post::with('author')->where('slug', $slug)->firstOrFail();
-    
+
         if (!$entity) {
             // Handle the case where the post is not found
             return redirect()->route('posts.index')->withErrors('Post not found.');
         }
-    
+
         return view('posts.post', compact('entity', 'entityName', 'entityType'));
     }
 
@@ -111,15 +111,15 @@ class PostController extends Controller
 
         $data = $request->session()->get('post_preview');
         $request->session()->forget('post_preview');
-    
+
         if (!$data) {
             return redirect()->route('form')->withErrors('No post data to confirm.');
         }
-    
+
         // Generate the slug from the title
         $slug_text = \strip_tags($data['title']);
         $slug = Str::slug($slug_text, '-');
-    
+
         // Create the post
         $entity = new Post([
             'title' => $data['title'],
@@ -127,10 +127,9 @@ class PostController extends Controller
             'slug' => $slug,
             'author_id' => Auth::id(),
         ]);
-    
+
         $entity->save();
-    
+
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
-
 }

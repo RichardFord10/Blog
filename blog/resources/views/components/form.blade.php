@@ -1,13 +1,12 @@
 <div>
     <div class="container mx-auto py-5">
-        <x-dashboard.return/>
+        <x-dashboard.return />
         <div class="max-w-lg mx-auto mt-2">
             <!-- Heading -->
-            <x-heading :entity="$entity"/>
+            <x-heading :entity="$entity" />
             <!-- Form -->
             <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
-                <form method="POST" enctype="multipart/form-data"
-                action="@if(isset($entity) && isset($entity->id))
+                <form method="POST" enctype="multipart/form-data" action="@if(isset($entity) && isset($entity->id))
                             {{ route($entityType.'.update', $entity->id) }}
                         @else
                             {{ route($entityType.'.store') }}
@@ -18,38 +17,35 @@
                     @endif
                     <!-- Title -->
                     @if($entityType != 'portfolio')
-                    <x-title :entity="$entity"/>
+                    <x-title :entity="$entity" />
                     @else
-                    <x-name :entity="$entity"
-                            :entity-type="$entityType"
-                            :entity-name="$entityName"/>
+                    <x-name :entity="$entity" :entity-type="$entityType" :entity-name="$entityName" />
                     @endif
                     <!-- WYSIWYG -->
-                    <x-wysiwyg :entity="$entity"
-                                :entity-type="$entityType"/>
+                    <x-wysiwyg :entity="$entity" :entity-type="$entityType" />
                     <!-- Company -->
                     @if($entityType == 'work_history')
-                        <x-company :entity="$entity"/>
+                    <x-company :entity="$entity" />
                     @endif
                     <!-- Link -->
                     @if($entityType == 'projects' || $entityType == 'socials')
-                        <x-link :entity="$entity"/>
+                    <x-link :entity="$entity" />
                     @endif
                     <!-- Start Date -->
                     @if($entityType == 'work_history')
-                        <x-start-date :entity="$entity"/>
+                    <x-start-date :entity="$entity" />
                     <!-- End Date -->
-                        <x-end-date :entity="$entity"/>
+                    <x-end-date :entity="$entity" />
                     @endif
                     <!-- Image -->
                     @if($entityType != 'posts')
-                        <x-image :entity="$entity"/>
+                    <x-image :entity="$entity" />
                     @endif
                     @if($entityType == 'portfolio')
-                        <x-active :entity="$entity"/>
+                    <x-active :entity="$entity" />
                     @endif
                     <!-- Submit Button -->
-                    <x-submit :entity="$entity"/>
+                    <x-submit :entity="$entity" />
                 </form>
             </div>
         </div>
