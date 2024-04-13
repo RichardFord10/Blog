@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import  "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import  "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-@import  "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
-@import  "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
+@import "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
 @import '@fortawesome/fontawesome-free/css/all.css';
 @import "~aos/dist/aos.css";
 
@@ -14,26 +14,32 @@
 h1 {
   @apply text-3xl;
 }
+
 h2 {
   @apply text-xl;
 }
+
 h3 {
   @apply text-lg;
 }
 
 body {
-  background-color: linear-gradient(to right, #243B55, #141E30)!important;
+  background-color: linear-gradient(to right, #243B55, #141E30) !important;
 }
 
 @layer base {
-  ul, ol {
+
+  ul,
+  ol {
     list-style: revert;
   }
 }
 
 .loader {
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
+  border: 4px solid #f3f3f3;
+  /* Light grey */
+  border-top: 4px solid #3498db;
+  /* Blue */
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -41,14 +47,19 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {
   .table-container {
-      max-width: 100% !important;
-      overflow-x: auto!important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
   }
 }
 
@@ -61,27 +72,27 @@ label:hover .absolute {
 }
 
 body {
-    margin: 0!important;
-    padding: 0!important;
-    color: #fff;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #fff;
 }
-  
+
 .code-block {
   margin: 1em 0;
-  
-  overflow: hidden; 
+
+  overflow: hidden;
   background: #000000;
   border-radius: 0.5em;
 }
 
 .code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 1em;
-    background: #333;
-    color: #fff;
-    margin: 0; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background: #333;
+  color: #fff;
+  margin: 0;
 }
 
 .code-language {
@@ -100,12 +111,12 @@ body {
 
 
 pre[class*="language-"] {
-  margin: 0!important;
-  border: none!important;
-  background: #000!important;
+  margin: 0 !important;
+  border: none !important;
+  background: #000 !important;
 }
 
-.code-header + pre {
+.code-header+pre {
   margin-top: 0;
 }
 
