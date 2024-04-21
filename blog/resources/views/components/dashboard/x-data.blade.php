@@ -5,6 +5,7 @@
                     : (this.tab === 'workHistory') ? '{{ route('work_history.create') }}' 
                     : (this.tab === 'socials') ? '{{ route('socials.create') }}'
                     : (this.tab === 'about') ? '{{ route('portfolio.create') }}'
+                    : (this.tab === 'skills') ? '{{ route('skills.create') }}'
                     : '{{ route('projects.create') }}'; 
             } 
         }" class="container-fluid">

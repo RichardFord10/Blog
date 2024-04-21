@@ -8,6 +8,7 @@ use App\Http\Controllers\CsvController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\DashboardController;
 
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('work_history', WorkHistoryController::class);
     Route::resource('projects', ProjectsController::class);
     Route::resource('socials', SocialController::class);
+    Route::resource('skills', SkillsController::class);
     Route::get('posts/review', [PostController::class, 'review'])->name('posts.review');
     Route::post('posts/confirm', [PostController::class, 'confirm'])->name('posts.confirm');
     Route::patch('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
@@ -45,8 +47,12 @@ Route::middleware('auth')->group(function () {
 
 
 //Non Auth Routes
-Route::get('/imdb', function () {return view('imdb.index');})->name('imdb');
-Route::get('/finance-tracker', function () {return view('finance-tracker.index');})->name('finance-tracker');
+Route::get('/imdb', function () {
+    return view('imdb.index');
+})->name('imdb');
+Route::get('/finance-tracker', function () {
+    return view('finance-tracker.index');
+})->name('finance-tracker');
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::post('/chat', [ChatGptController::class, 'chat'])->name('chat.send');
 Route::get('/chat', [ChatGptController::class, 'index'])->name('chat.index');
@@ -59,4 +65,4 @@ Route::post('/csv-upload', [CsvController::class, 'upload'])->name('upload');
 Route::get('/csv-download', [CsvController::class, 'download'])->name('download');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

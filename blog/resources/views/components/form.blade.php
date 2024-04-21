@@ -22,13 +22,15 @@
                     <x-name :entity="$entity" :entity-type="$entityType" :entity-name="$entityName" />
                     @endif
                     <!-- WYSIWYG -->
+                    @if($entityType != 'skills')
                     <x-wysiwyg :entity="$entity" :entity-type="$entityType" />
+                    @endif
                     <!-- Company -->
                     @if($entityType == 'work_history')
                     <x-company :entity="$entity" />
                     @endif
                     <!-- Link -->
-                    @if($entityType == 'projects' || $entityType == 'socials')
+                    @if($entityType == 'projects' || $entityType == 'socials' || $entityType == 'skills')
                     <x-link :entity="$entity" />
                     @endif
                     <!-- Start Date -->

@@ -7,7 +7,7 @@ use App\Models\WorkHistory;
 use App\Models\Socials;
 use App\Models\Projects;
 use App\Models\Post;
-
+use App\Models\Skills;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +17,7 @@ class PortfolioController extends Controller
     public $projects;
     public $workHistories;
     public $socials;
+    public $skills;
     public $portfolio;
     public $entity;
 
@@ -109,6 +110,7 @@ class PortfolioController extends Controller
         $projects = Projects::all();
         $socials = Socials::all();
         $portfolio = Portfolio::all();
+        $skills = Skills::all();
         $posts = Post::all();
 
         $this->entity = new \stdClass();
@@ -119,6 +121,7 @@ class PortfolioController extends Controller
         $this->entity->projects = (object) ['data' => $projects, 'type' => 'projects', 'name' => 'projects'];
         $this->entity->workHistories = (object) ['data' => $workHistories, 'type' => 'workHistories', 'name' => 'Work History'];
         $this->entity->socials = (object) ['data' => $socials, 'type' => 'socials', 'name' => 'Socials'];
+        $this->entity->skills = (object) ['data' => $skills, 'type' => 'skills', 'name' => 'Skills'];
         $this->entity->portfolio = (object) ['data' => $portfolio, 'type' => 'portfolio', 'name' => 'Portfolio'];
         $this->entity->posts = (object) ['data' => $posts, 'type' => 'posts', 'name' => 'Blog'];
 

@@ -20,6 +20,10 @@
             <div data-aos="fade-up" data-aos-anchor-placement="top-center">
                 <x-portfolio.socials :entity="$entity->socials->data" />
             </div>
+            <!-- Skills -->
+            <div>
+                <x-portfolio.skills :entity="$entity->skills->data" />
+            </div>
             <!-- Footer -->
             <x-portfolio.footer :entity="$entity->portfolio->data" />
 </x-app-layout>
