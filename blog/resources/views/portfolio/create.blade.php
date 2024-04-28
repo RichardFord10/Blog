@@ -9,7 +9,7 @@
             </div>
             <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
+                <div class="dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
                     <!-- First Name Input -->
                     <div class="mb-4">
                         <label for="first_name" class="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">First Name:</label>

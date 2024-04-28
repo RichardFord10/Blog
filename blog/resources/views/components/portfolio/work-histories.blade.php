@@ -1,12 +1,12 @@
 <div>
     <div class="mt-10 px-4">
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Work History</h3>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-white text-center">Work History</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
             @isset($entity)
             @foreach($entity as $work)
             <!-- Use flex to create a column layout and make it full height -->
             <a href="{{ route('work-history.show', $work->id) }}">
-                <div data-aos="fade-up" data-aos-anchor-placement="top-center" class="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-6 p-6 transition-shadow duration-300 hover:shadow-xl">
+                <div data-aos="fade-up" data-aos-anchor-placement="top-center" class="flex flex-col h-full dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-6 p-6 transition-shadow duration-300 hover:shadow-xl">
                     <img class="h-45 w-full object-cover rounded-lg mt-2 mx-auto" src="{{ asset('storage/' . $work->image) }}" alt="Work Image">
                     <div class="flex-1"> <!-- flex-1 will make the inner div grow and fill available space -->
                         <h4 class="font-bold text-lg dark:text-white mt-4">

@@ -1,14 +1,14 @@
 <div>
     <div class="container mx-auto p-8 max-w-4xl">
         <div class="py-4 text-center">{!! $entity->title !!}</div>
-        <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden mx-2">
+        <div class="dark:bg-gray-700 rounded-lg shadow overflow-hidden mx-2">
             <div class="p-4">
-                <article class="prose dark:prose-invert mx-auto items-center"> 
+                <article class="prose dark:prose-invert mx-auto items-center">
                     {!! $entity->content !!}
                 </article>
                 <div class="mt-4 text-gray-600 dark:text-gray-300">
                     <div class="pt-7 mt-4 border-t border-gray-200 dark:border-gray-600">
-                        <p class="text-xs text-center text-gray-500 dark:text-gray-400"> 
+                        <p class="text-xs text-center text-gray-500 dark:text-gray-400">
                             <sup>Author: {{ Auth::user()->name ?? 'Not Available' }}</sup>
                         </p>
                     </div>

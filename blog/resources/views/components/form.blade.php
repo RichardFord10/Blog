@@ -5,7 +5,7 @@
             <!-- Heading -->
             <x-heading :entity="$entity" />
             <!-- Form -->
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
+            <div class="dark:bg-gray-700 rounded-lg shadow overflow-hidden p-4">
                 <form method="POST" enctype="multipart/form-data" action="@if(isset($entity) && isset($entity->id))
                             {{ route($entityType.'.update', $entity->id) }}
                         @else

@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                 @foreach($entity as $skill)
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
+                <div class="dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-4 flex flex-col h-full">
                     <img class="h-40 w-40 object-cover mt-2 mx-auto" src="{{ asset('storage/' . $skill->image) }}" alt="Project Image">
                     <div class="flex flex-col flex-grow p-4 text-center">
                         <h4 class="font-bold text-lg dark:text-white">{{ $skill->title }}</h4>

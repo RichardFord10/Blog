@@ -1,5 +1,5 @@
 @if(Auth::check())
-<nav x-data="{ open: false }" class="nav-container bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
+<nav x-data="{ open: false }" class="nav-container dark:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
     <!-- Primary Navigation Menu -->
     <div class="max-w-9xl mx-auto px-3 sm:px-6 lg:px-8">
         <div class="flex justify-between h-14 items-center">
@@ -29,13 +29,13 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <div class="mr-2 relative" x-data="{ open: false }">
-                    <button @click="open = !open" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                    <button @click="open = !open" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-gray-700 focus:outline-none transition">
                         Menu
                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-                    <div x-show="open" @click.away="open = false" x-cloak class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
+                    <div x-show="open" @click.away="open = false" x-cloak class="absolute z-50 mt-2 w-48 rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
                         <div class="py-1">
 
                             <a href="{{ route('posts.index') }}" class="block px-4 py-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
@@ -67,7 +67,7 @@
                 </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -172,7 +172,7 @@
 </nav>
 @else
 <!-- User is not logged in -->
-<nav x-data="{ open: false }" class="nav-container bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
+<nav x-data="{ open: false }" class="nav-container dark:bg-gray-800 border-b border-gray-100 dark:border-gray-800">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-14 items-center">

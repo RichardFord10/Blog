@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-dashboard.x-data />
-    <div class="flex justify-center w-full items-center py-2 bg-white dark:bg-gray-800">
+    <div class="flex justify-center w-full items-center py-2 dark:bg-gray-800">
         <!-- Dashboard Navigation -->
         <div class="w-full py-2 flex flex-col items-center">
             <!-- Greeting  -->
