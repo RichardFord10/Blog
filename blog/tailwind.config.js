@@ -11,12 +11,13 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    darkMode: 'class',
 
     theme: {
         extend: {
             backgroundImage: {
                 'custom-gradient': 'linear-gradient(to right, #1a2a3b, #0f1722)',
-              },
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

@@ -39,18 +39,18 @@ tinymce.init({
     selector: '#content, #about, #description',
     setup: function (editor) {
         editor.ui.registry.addButton('customcode', {
-          text: 'Custom Code',
-          onAction: function () {
-            editor.insertContent('<div class="code-block"><div class="code-header"><span class="code-language"><!-- Language --!></span> <button class="copy-code">Copy code</button></div><pre><code class="language-#"></code></pre></div>');
-          }
-        }),
-        editor.ui.registry.addButton('customheader', {
-            text: 'Custom Header',
+            text: 'Custom Code',
             onAction: function () {
-              editor.insertContent('<h1 class="mb-1 text-center text-3xl font-heading font-bold text-gray-800 dark:text-white"></h1>');
+                editor.insertContent('<div class="code-block"><div class="code-header"><span class="code-language"><!-- Language --!></span> <button class="copy-code">Copy code</button></div><pre><code class="language-#"></code></pre></div>');
             }
-          });
-      },
+        }),
+            editor.ui.registry.addButton('customheader', {
+                text: 'Custom Header',
+                onAction: function () {
+                    editor.insertContent('<h1 class="mb-1 text-center text-3xl font-heading font-bold text-white"></h1>');
+                }
+            });
+    },
     extended_valid_elements: 'div[class|code-header|code-language|copy-code],code[class|language],pre,script[type|language]',
     custom_elements: 'code',
     skin: false,
@@ -66,11 +66,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     var imageElement = document.getElementById('image');
 
     if (imageElement) {
-        imageElement.addEventListener('change', function() {
+        imageElement.addEventListener('change', function () {
             var file = this.files[0];
             if (file) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     document.getElementById('preview-img').src = e.target.result;
                     document.getElementById('image-preview').classList.remove('hidden');
                 };
@@ -190,7 +190,7 @@ document.addEventListener('alpine:init', () => {
         hasCsvData: false,
         showDownloadButton: false,
 
-        
+
         //csv
         downloadCSV() {
             // Select the table
@@ -253,7 +253,7 @@ document.addEventListener('alpine:init', () => {
                 return Array.from({ length: this.columns }, (_, colIndex) => row[colIndex] || '');
             });
 
-            
+
 
             if (this.checkCsvData()) {
                 this.showDownloadButton = true;
@@ -270,7 +270,7 @@ document.addEventListener('alpine:init', () => {
                 }
                 this.adjustTable();
             });
-        
+
             this.$watch('columns', (newColumns) => {
                 if (newColumns > 10) {
                     this.columns = 10; // Set columns to max if exceeded
