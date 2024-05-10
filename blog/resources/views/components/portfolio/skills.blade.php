@@ -3,7 +3,7 @@
     <div class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-center">
         @isset($entity)
         @foreach($entity as $skill)
-        <div class="mb-2 flex justify-center items-center">
+        <div data-aos="fade-up" data-aos-anchor-placement="top-center" class="mb-2 flex justify-center items-center">
             <a target="_blank" href="{{ $skill->link }}" class="block hover:underline hover:text-blue-500">
                 <!-- Adjusting the image size for different screen sizes -->
                 <img class="h-50 w-50 object-cover rounded-lg" src="{{ asset('storage/' . $skill->image) }}" alt="Skill Image">
