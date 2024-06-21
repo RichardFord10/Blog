@@ -106,7 +106,7 @@ class PortfolioController extends Controller
     public function getEntity()
     {
         //TODO Get only Active
-        $workHistories = WorkHistory::all();
+        $workHistories = WorkHistory::orderBy('start_date', 'desc')->get();
         $projects = Projects::all();
         $socials = Socials::all();
         $portfolio = Portfolio::all();
