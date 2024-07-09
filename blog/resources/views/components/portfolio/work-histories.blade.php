@@ -18,7 +18,7 @@
                     <!-- Use mt-auto to automatically margin the top and push the footer to the bottom -->
                     <div class="pt-4 mt-auto border-t border-gray-200 dark:border-gray-600">
                         <p class="text-xs text-gray-500 dark:text-gray-400 items-center">
-                            {{ $work->start_date }} - {{ $work->end_date ?? 'current' }}
+                            <!-- {{ $work->start_date }} - {{ $work->end_date ?? 'current' }} -->
                         </p>
                     </div>
                 </div>
