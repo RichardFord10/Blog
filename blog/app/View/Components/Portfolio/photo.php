@@ -9,13 +9,13 @@ use Illuminate\View\Component;
 class Photo extends Component
 {
     public $entity;
+
     /**
      * Create a new component instance.
      */
     public function __construct($entity)
     {
-        $this->entity = $entity->first()->image ?? null;
-
+        $this->entity = $entity;
     }
 
     /**

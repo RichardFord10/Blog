@@ -3,7 +3,7 @@
         <!-- Profile Section -->
         <div class="text-center max-w-4xl mx-auto p-4">
             <!-- Photo -->
-            <x-portfolio.photo :entity="$entity->portfolio->data" />
+            <x-portfolio.photo :entity="$entity->portfolio->data->first()" />
             <!-- About Me -->
             <div data-aos="fade-up" data-aos-anchor-placement="top-center">
                 <x-portfolio.about :entity="$entity->portfolio->data" />

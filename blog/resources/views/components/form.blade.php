@@ -14,6 +14,8 @@
                     @csrf
                     @if($entity != 'new')
                     @method('PUT')
+                    @else
+                    @method('POST')
                     @endif
                     <!-- Title -->
                     @if($entityType != 'portfolio')

@@ -50,11 +50,11 @@ class PortfolioController extends Controller
 
     public function create()
     {
-        $entity = "new";
+        $entity = new Portfolio(); // Create a new instance of Portfolio as a placeholder
         $entityType = 'portfolio';
         $entityName = 'Portfolio';
 
-        return view('form', compact('entityType', 'entityName'));
+        return view('form', compact('entity', 'entityType', 'entityName'));
     }
 
 
