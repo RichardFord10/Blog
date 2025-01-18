@@ -9,7 +9,7 @@
         <div class="dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-6 transition-shadow duration-300 hover:shadow-xl">
             <!-- Centered image with limited width -->
             <div class="flex justify-center">
-                <img class="object-cover rounded-lg" src="{{ asset('storage/' . $entity->image) }}" alt="Work Image" style="max-width: 600px; max-height: 400px;">
+                <img class="object-cover mt-8 rounded-lg" src="{{ asset('storage/' . $entity->image) }}" alt="Work Image" style="max-width: 600px; max-height: 400px;">
             </div>
             <!-- Content -->
             <div class="p-6">
