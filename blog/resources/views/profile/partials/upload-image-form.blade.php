@@ -11,7 +11,7 @@
                     @if($user->image)
                     <div class="relative">
                         <!-- Image -->
-                        <img src="{{ $user->image) }}" alt="Profile Image" class="mb-3 rounded-full" style="max-width: 100px; max-height: 100px; display: block;">
+                        <img src="{{ $user->image }}" alt="Profile Image" class="mb-3 rounded-full" style="max-width: 100px; max-height: 100px; display: block;">
                         <!-- Camera Icon Overlay -->
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 rounded-full" style="background-color: rgba(0, 0, 0, 0.5); transition: opacity 0.3s;">
                             <i class="fa fa-camera text-grey text-lg"></i>
